@@ -6,6 +6,7 @@ import { NavLink } from "react-router-dom";
 import "./InvitedHeader.css";
 
 const InvitedHeader = () => {
+    
     return (
         <>
             <nav className="site-nav mb-5">
@@ -59,7 +60,7 @@ const InvitedHeader = () => {
                                 <li><NavLink to={"/"} className="sticky-active">Contacto</NavLink></li>
                             </ul>
 
-                            <NavLink to={"/"} className="btn-book btn btn-primary btn-sm menu-absolute mr-3">Inscribirse Ahora</NavLink>
+                            <NavLink to={"/"} className="boton-book boton boton-personalizado boton-sm menu-absolute mr-3">Inscribirse Ahora</NavLink>
 
                             <Navbar className="p-0 menu-lateral" collapseOnSelect expand="992px">
                                 <Navbar.Toggle className="d-lg-none" aria-controls="responsive-navbar-nav" >

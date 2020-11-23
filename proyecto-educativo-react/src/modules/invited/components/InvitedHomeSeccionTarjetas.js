@@ -1,44 +1,53 @@
 import React from 'react';
-import AOS from 'aos';
+import InvitedHomeSeccionTarjetasItem from './InvitedHomeSeccionTarjetasItem';
 
 import teach from "./../../../assets/img/teach.svg";
+import children from "./../../../assets/img/children-on-see-saw.svg";
+import friends from "./../../../assets/img/friends.svg";
+
+
+const data = [
+    {
+        id: 1,
+        imagen: teach,
+        color: "color-1",
+        delay: "0",
+        titulo: "Aprender",
+        texto: "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts."
+    },
+
+    {
+        id: 2,
+        imagen: children,
+        color: "color-2",
+        delay: "100",
+        titulo: "Jugar",
+        texto: "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts."
+    },
+
+    {
+        id: 3,
+        imagen: friends,
+        color: "color-3",
+        delay: "200",
+        titulo: "Socializar",
+        texto: "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts."
+    }
+];
+
 
 const InvitedHomeSeccionTarjetas = () => {
-
-    AOS.init();
 
     return (
 
         <div className="untree_co-section py-0">
             <div className="container">
                 <div className="row">
-                    <div className="col-md-6 col-lg-4">
-                        <div className="block-v1 color-1 aos-init aos-animate" data-aos="fade-up" data-aos-delay="0">
-                            {/* <span className="flaticon-teach"></span> */}
-                            <div className="tarjeta-container">
-                            <img className="tarjeta-item" src={teach} alt=""/>
-                            </div>
-                            <h3>Aprender</h3>
-                            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
-                                there live the blind texts.</p>
-                        </div>
-                    </div>
-                    <div className="col-md-6 col-lg-4">
-                        <div className="block-v1 color-2 aos-init aos-animate" data-aos="fade-up" data-aos-delay="200">
-                            <span className="flaticon-bear"></span>
-                            <h3>Jugar</h3>
-                            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
-                                there live the blind texts.</p>
-                        </div>
-                    </div>
-                    <div className="col-md-6 col-lg-4">
-                        <div className="block-v1 color-3 aos-init aos-animate" data-aos="fade-up" data-aos-delay="400">
-                            <span className="flaticon-baby"></span>
-                            <h3>Socializar</h3>
-                            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
-                                there live the blind texts.</p>
-                        </div>
-                    </div>
+                    {
+                        data.map(item => {
+                            return <InvitedHomeSeccionTarjetasItem item={item} />
+                        })
+                    }
                 </div>
             </div>
         </div>

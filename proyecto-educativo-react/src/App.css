@@ -8,31 +8,36 @@
 @import "./assets/css/style.css";
 /* @import "./css/"; */
 
-:root{
-    /* COLORES */
-    --blanco: #ffffff;
-    --humo: #f8f9fa;
-    --negro-2: #333;
-    --negro-1:#000000;
-    --negro-3:  #43434d;
-    --negro-4: #303030;
-    --plomo-1: #7b7b7b;
-    --plomo-2: #ccc;
-    --plomo-3: #e6e6e6;
-    --plomo-4: #999;
-    --verde-1: #12947f;
-    --verde-2: #0fb78d;
-    --verde-3: #11ca9c;
-    --verde-4: #5cb100;
-    --verde-5: #13e6b1;
-    --naranja-1: #ec661f;
-    --naranja-2: #fd9800;
-    --celeste-1: #4fb0dc;
-    --violeta-1: #6b53ab;
-    --humo-2: #F1F1EF;
+:root {
+  /* COLORES */
+  --blanco: #ffffff;
+  --humo: #f8f9fa;
+  --negro-2: #333;
+  --negro-1: #000000;
+  --negro-3: #43434d;
+  --negro-4: #303030;
+  --plomo-1: #7b7b7b;
+  --plomo-2: #ccc;
+  --plomo-3: #e6e6e6;
+  --plomo-4: #999;
+  --verde-1: #12947f;
+  --verde-2: #0fb78d;
+  --verde-3: #11ca9c;
+  --verde-4: #5cb100;
+  --verde-5: #13e6b1;
+  --verde-6: #eef7e5;
+  --verde-7: #e7f8f3;
+  --naranja-1: #ec661f;
+  --naranja-2: #fd9800;
+  --naranja-3: #fdefe8;
+  --naranja-4: #fff4e5;
+  --celeste-1: #4fb0dc;
+  --celeste-2: #edf7fb;
+  --violeta-1: #6b53ab;
+  --violeta-2: #f0edf6;
+  --humo-2: #f1f1ef;
 
-    /* FONTS */
-    --fuente-libre: "Libre Baskerville";
-    --fuente-mulish: "Mulish";
-
+  /* FONTS */
+  --fuente-libre: "Libre Baskerville";
+  --fuente-mulish: "Mulish";
 }

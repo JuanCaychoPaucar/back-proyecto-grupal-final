@@ -1,0 +1,29 @@
+import React from 'react';
+import "./InvitedHomeSeccionSecundaria.css";
+
+const InvitedHomeSeccionSecundaria = () => {
+    return (
+        <div className="untree_co-section pt-0 bg-img overlay fondo-secundario">
+            <div className="container">
+                <div className="row align-items-center justify-content-center text-center">
+                    <div className="col-lg-7">
+                        <h2 className="text-white mb-3 aos-init aos-animate" data-aos="fade-up" data-aos-delay="0">
+                            Educación para los Líderes del Mañana
+                        </h2>
+                        <p className="text-white h5 mb-4 aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
+                            Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.
+                        </p>
+                        <p>
+                            <a href="!#" className="boton boton-personalizado aos-init aos-animate" data-aos="fade-up"
+                                data-aos-delay="200">
+                                Inscribirse Ahora
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    )
+}
+
+export default InvitedHomeSeccionSecundaria;

@@ -26,7 +26,7 @@ const InvitedHomeSeccionPrincipal = () => {
                                         far from the countries Vokalia and Consonantia, there live the blind texts.</p>
                                     </div>
                                     <p className="mb-0 aos-init aos-animate" data-aos="fade-up" data-aos-delay="300"><a href="!#"
-                                        className="btn btn-primary">Explore now</a></p>
+                                        className="boton boton-personalizado">Explore now</a></p>
                                 </div>
                             </div>
                         </div>

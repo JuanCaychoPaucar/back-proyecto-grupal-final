@@ -1,10 +1,17 @@
 import React from 'react';
-import Sticky from 'react-sticky-el';
+import AOS from 'aos';
 import InvitedHeader from '../components/InvitedHeader';
+import InvitedHomeSeccionOfertaEducativa from '../components/InvitedHomeSeccionOfertaEducativa';
 import InvitedHomeSeccionPrincipal from '../components/InvitedHomeSeccionPrincipal';
 import InvitedHomeSeccionTarjetas from '../components/InvitedHomeSeccionTarjetas';
+import InvitedHomeSeccionSecundaria from '../components/InvitedHomeSeccionSecundaria';
+import InvitedHomeSeccionNosotros from '../components/InvitedHomeSeccionNosotros';
+
 
 const InvitedHomeScreen = () => {
+
+    AOS.init();
+
     return (
         <>
             <InvitedHeader />
@@ -21,86 +28,16 @@ const InvitedHomeScreen = () => {
                 {/* FIN TARJETAS */}
 
                 {/* INICIO SECCION OFERTA EDUCATIVA */}
-                <div className="untree_co-section">
-                    <div className="container">
-
-                        <div className="row justify-content-center mb-5">
-                            <div className="col-lg-7 text-center aos-init aos-animate" data-aos="fade-up" data-aos-delay="0">
-                                <h2 className="line-bottom text-center mb-4">Nuestra Oferta Educativa</h2>
-                                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
-                                there
-                            live the blind texts.</p>
-                            </div>
-                        </div>
-
-                        {/* INICIO CONTENEDOR CARDS */}
-                        <div className="row">
-
-                            <div className="col-6 col-sm-6 col-md-6 col-lg-4 aos-init aos-animate" data-aos="fade-up"
-                                data-aos-delay="100">
-                                <div className="feature">
-                                    <span className="icon-music_note color-1"></span>
-                                    <h3>Clases de Musica</h3>
-                                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
-                                there live the blind texts.</p>
-                                </div>
-                            </div>
-
-                            <div className="col-6 col-sm-6 col-md-6 col-lg-4 aos-init aos-animate" data-aos="fade-up"
-                                data-aos-delay="200">
-                                <div className="feature">
-                                    <span className="icon-calculator color-2"></span>
-                                    <h3>Clases de Matematica</h3>
-                                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
-                                there live the blind texts.</p>
-                                </div>
-                            </div>
-
-                            <div className="col-6 col-sm-6 col-md-6 col-lg-4 aos-init aos-animate" data-aos="fade-up"
-                                data-aos-delay="300">
-                                <div className="feature">
-                                    <span className="icon-leanpub color-3"></span>
-                                    <h3>Clases de Ingles</h3>
-                                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
-                                there live the blind texts.</p>
-                                </div>
-                            </div>
-
-                            <div className="col-6 col-sm-6 col-md-6 col-lg-4 aos-init aos-animate" data-aos="fade-up"
-                                data-aos-delay="100&quot;">
-                                <div className="feature">
-                                    <span className="icon-book color-4"></span>
-                                    <h3>Comprension Lectora</h3>
-                                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
-                                there live the blind texts.</p>
-                                </div>
-                            </div>
-
-                            <div className="col-6 col-sm-6 col-md-6 col-lg-4 aos-init aos-animate" data-aos="fade-up"
-                                data-aos-delay="200">
-                                <div className="feature">
-                                    <span className="icon-change_history color-5"></span>
-                                    <h3>Clases de Historia</h3>
-                                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
-                                there live the blind texts.</p>
-                                </div>
-                            </div>
-
-                            <div className="col-6 col-sm-6 col-md-6 col-lg-4 aos-init aos-animate" data-aos="fade-up"
-                                data-aos-delay="300">
-                                <div className="feature">
-                                    <span className="icon-className color-6"></span>
-                                    <h3>Active Class</h3>
-                                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
-                                there live the blind texts.</p>
-                                </div>
-                            </div>
-
-                        </div>
-                        {/* FIN CONTENEDOR CARDS */}
-                    </div>
-                </div>
+                <InvitedHomeSeccionOfertaEducativa />
                 {/* FIN SECCION OFERTA EDUCATIVA */}
+
+                {/* INICIO SECCION SECUNDARIA */}
+                <InvitedHomeSeccionSecundaria />
+                {/* FIN SECCION SECUNDARIA */}
+
+                {/* INICIO SECCION NOSOTROS */}
+                <InvitedHomeSeccionNosotros />
+                {/* FIN SECCION NOSOTROS */}
 
 
 
