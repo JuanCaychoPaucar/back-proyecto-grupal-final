@@ -67,7 +67,7 @@ const data = [
 
 const InvitedHomeSeccionOfertaEducativa = () => {
     return (
-        <div className="untree_co-section">
+        <div className="untree_co-section" id="oferta-educativa">
             <div className="container">
 
                 <div className="row justify-content-center mb-5">

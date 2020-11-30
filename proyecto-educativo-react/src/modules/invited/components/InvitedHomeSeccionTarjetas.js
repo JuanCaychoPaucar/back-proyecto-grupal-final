@@ -45,7 +45,7 @@ const InvitedHomeSeccionTarjetas = () => {
                 <div className="row">
                     {
                         data.map(item => {
-                            return <InvitedHomeSeccionTarjetasItem item={item} />
+                            return <InvitedHomeSeccionTarjetasItem key={item.id} item={item} />
                         })
                     }
                 </div>

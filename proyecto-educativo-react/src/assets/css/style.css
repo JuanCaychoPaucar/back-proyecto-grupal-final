@@ -121,11 +121,11 @@ h4,
   padding-left: 15px;
   padding-right: 15px;
 }
-.boton.boton-outline-primary {
-  border-color: var(--verde-2);
+.boton.boton-outline-personalizado {
+  border: 1px solid var(--verde-2);
   color: var(--verde-2);
 }
-.boton.boton-outline-primary:hover {
+.boton.boton-outline-personalizado:hover {
   background: var(--verde-2);
   color: var(--blanco);
 }
@@ -1121,8 +1121,8 @@ h4,
   content: "";
   position: absolute;
   width: 150%;
-  height: 70%;
-  right: -100%;
+  height: 65%;
+  right: 60%;
   top: -40px;
   z-index: -1;
   background: rgba(15, 183, 141, 0.2);

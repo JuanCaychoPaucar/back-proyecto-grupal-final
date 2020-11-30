@@ -1,5 +1,5 @@
 import React from 'react';
-import { Nav, Navbar, NavDropdown } from 'react-bootstrap';
+import { Nav, Navbar } from 'react-bootstrap';
 import Sticky from 'react-sticky-el';
 import { NavLink } from "react-router-dom";
 
@@ -16,25 +16,25 @@ const InvitedHeader = () => {
                         <div className="row align-items-center">
                             <div className="col-6 col-lg-9">
                                 <NavLink to={"/"} className="small mr-3">
-                                    <span className="icon-question-circle-o mr-2"></span>
+                                    <span className="mr-2"><i className="far fa-question-circle"></i></span>
                                     <span className="d-none d-lg-inline-block">Alguna duda?</span>
                                 </NavLink>
 
                                 <NavLink to={"/"} className="small mr-3">
-                                    <span className="icon-phone mr-2"></span>
+                                    <span className="mr-2"><i className="fas fa-phone-alt"></i></span>
                                     <span className="d-none d-lg-inline-block">+51 1 444 4444</span>
                                 </NavLink>
 
                                 <NavLink to={"/"} className="small mr-3">
-                                    <span className="icon-envelope mr-2"></span>
+                                    <span className="mr-2"><i className="fas fa-envelope"></i></span>
                                     <span className="d-none d-lg-inline-block">info@colegio.com</span>
                                 </NavLink>
                             </div>
 
                             <div className="col-6 col-lg-3 text-right">
                                 <NavLink to={"/auth"} className="small mr-3">
-                                    <span className="icon-lock"></span>
-                                    Ingresar
+                                    <span className="mr-2"><i className="fas fa-lock"></i></span>
+                                    <span className="d-none d-lg-inline-block">Ingresar</span>
                                 </NavLink>
                             </div>
 
@@ -60,7 +60,7 @@ const InvitedHeader = () => {
                                 <li><NavLink to={"/"} className="sticky-active">Contacto</NavLink></li>
                             </ul>
 
-                            <NavLink to={"/"} className="boton-book boton boton-personalizado boton-sm menu-absolute mr-3">Inscribirse Ahora</NavLink>
+                            <NavLink to={"/"} className="boton-book boton boton-personalizado boton-sm menu-absolute mr-3">Admision</NavLink>
 
                             <Navbar className="p-0 menu-lateral" collapseOnSelect expand="992px">
                                 <Navbar.Toggle className="d-lg-none" aria-controls="responsive-navbar-nav" >
@@ -82,12 +82,6 @@ const InvitedHeader = () => {
                                     </Nav>
                                 </Navbar.Collapse>
                             </Navbar>
-                            {/* <NavLink to={"/"} className="burger ml-auto float-right site-menu-toggle js-menu-toggle d-inline-block d-lg-none light" data-toggle="collapse"><span></span></NavLink> */}
-                            {/* <a href="!#"
-                                className="burger ml-auto float-right site-menu-toggle js-menu-toggle d-inline-block d-lg-none light"
-                                data-toggle="collapse" data-target="#main-navbar">
-                                <span></span>
-                            </a> */}
                         </div>
                     </div>
                 </Sticky>

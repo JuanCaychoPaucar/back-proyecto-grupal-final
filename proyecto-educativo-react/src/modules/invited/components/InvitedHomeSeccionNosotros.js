@@ -1,8 +1,11 @@
 import React from 'react';
+import { NavLink } from "react-router-dom";
+import CountUp from 'react-countup';
 
 import nosotros from "./../../../assets/img/about_1.jpg";
 
 const InvitedHomeSeccionNosotros = () => {
+
     return (
         <div className="untree_co-section">
             <div className="container">
@@ -15,29 +18,29 @@ const InvitedHomeSeccionNosotros = () => {
                             Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.
                             Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.
                         </p>
-                        <ul className="list-unstyled ul-check mb-5 primary aos-init aos-animate" data-aos="fade-up"
+                        <ul className="list-unstyled mb-5 primary aos-init aos-animate" data-aos="fade-up"
                             data-aos-delay="200">
-                            <li>Separated they live</li>
-                            <li>Bookmarksgrove right at the coast</li>
-                            <li>large language ocean</li>
+                            <li><i className="fas fa-check mr-2"></i>Separated they live</li>
+                            <li><i className="fas fa-check mr-2"></i>Bookmarksgrove right at the coast</li>
+                            <li><i className="fas fa-check mr-2"></i>large language ocean</li>
                         </ul>
                         <div className="row count-numbers mb-5">
-                            <div className="col-4 col-lg-4 aos-init aos-animate" data-aos="fade-up" data-aos-delay="0">
-                                <span className="counter d-block"><span data-number="4000">4,000</span><span>+</span></span>
+                            <div className={"col-4 col-lg-4 aos-init aos-animate"} data-aos="fade-up" data-aos-delay="0">
+                                <span className="counter d-block"><CountUp end={4000} duration={20} onReset /><span>+</span></span>
                                 <span className="caption-2">Estudiantes</span>
                             </div>
                             <div className="col-4 col-lg-4 aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
-                                <span className="counter d-block"><span data-number="49">49</span><span></span></span>
+                                <span className="counter d-block"><CountUp end={49} duration={20} /><span></span></span>
                                 <span className="caption-2">Docentes</span>
                             </div>
                             <div className="col-4 col-lg-4 aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
-                                <span className="counter d-block"><span data-number="12">12</span><span></span></span>
+                                <span className="counter d-block"><CountUp end={12} duration={20} /><span></span></span>
                                 <span className="caption-2">Premios</span>
                             </div>
                         </div>
                         <p data-aos="fade-up" data-aos-delay="200" className="aos-init aos-animate">
-                            <a href="!#" className="btn btn-primary">Admision</a>
-                            <a href="!#" className="btn btn-outline-primary">Learn More</a>
+                            <NavLink to={"/"} className="boton boton-personalizado mr-2">Admision</NavLink>
+                            {/* <a href="!#" className="boton boton-outline-personalizado">Learn More</a> */}
                         </p>
                     </div>
                     <div className="col-lg-6 aos-init aos-animate" data-aos="fade-up" data-aos-delay="400">

@@ -1,4 +1,6 @@
 import React from 'react';
+import { NavLink } from "react-router-dom";
+
 import "./InvitedHomeSeccionSecundaria.css";
 
 const InvitedHomeSeccionSecundaria = () => {
@@ -14,10 +16,7 @@ const InvitedHomeSeccionSecundaria = () => {
                             Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.
                         </p>
                         <p>
-                            <a href="!#" className="boton boton-personalizado aos-init aos-animate" data-aos="fade-up"
-                                data-aos-delay="200">
-                                Inscribirse Ahora
-                            </a>
+                            <NavLink to={"/"} className="boton boton-personalizado aos-init aos-animate" data-aos="fade-up" data-aos-delay="200">Admision</NavLink>
                         </p>
                     </div>
                 </div>
