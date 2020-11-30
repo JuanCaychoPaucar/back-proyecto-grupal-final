@@ -10,7 +10,7 @@ const AppRouter = () => {
             <Switch>
                 <Route path={"/auth"} component={AuthRouter} />
                 <Route path={"/admin"} component={AdminRouter} />
-                <Route path={"/"} exact component={InvitedRouter} />
+                <Route path={"/"} component={InvitedRouter} />
             </Switch>
         </Router>
     )

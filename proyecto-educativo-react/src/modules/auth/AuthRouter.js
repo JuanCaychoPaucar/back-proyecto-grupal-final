@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import AuthLoginScreen from './screen/AuthLoginScreen';
+import AuthLoginScreen from './screens/AuthLoginScreen';
 
 const AuthRouter = () => {
     return (

@@ -9,6 +9,11 @@ import InvitedHomeSeccionNosotros from '../components/InvitedHomeSeccionNosotros
 import InvitedHomeSeccionPension from '../components/InvitedHomeSeccionPension';
 import InvitedFooter from '../components/InvitedFooter';
 
+const texto = {
+    titulo: "Centro de Aprendizaje para sus Hijos",
+    parrafo: "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.",
+};
+
 
 const InvitedHomeScreen = () => {
 
@@ -17,7 +22,7 @@ const InvitedHomeScreen = () => {
             <InvitedHeader />
 
             <main>
-                <InvitedHomeSeccionPrincipal />
+                <InvitedHomeSeccionPrincipal texto={texto} />
 
                 <InvitedHomeSeccionTarjetas />
 

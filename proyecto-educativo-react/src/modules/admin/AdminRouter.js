@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Switch } from 'react-router-dom';
 import RutaPrivada from '../../RutaPrivada';
 import AdminHeader from './components/AdminHeader';
 import AdminDashboardScreen from './screens/dashboard/AdminDashboardScreen';

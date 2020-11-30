@@ -52,12 +52,11 @@ const InvitedHeader = () => {
                             </NavLink>
 
                             <ul className="js-clone-nav d-none d-lg-inline-block site-menu">
-                                <li><NavLink to={"/"} className="sticky-active">Inicio</NavLink></li>
-                                <li><NavLink to={"/"} className="sticky-active">Personal</NavLink></li>
-                                <li><NavLink to={"/"} className="sticky-active">Noticias</NavLink></li>
-                                <li><NavLink to={"/"} className="sticky-active">Galeria</NavLink></li>
-                                <li><NavLink to={"/"} className="sticky-active">Nosotros</NavLink></li>
-                                <li><NavLink to={"/"} className="sticky-active">Contacto</NavLink></li>
+                                <li><NavLink to={"/"} className="sticky-active">Home</NavLink></li>
+                                <li><NavLink to={"/personal"} className="sticky-active">Personal</NavLink></li>
+                                <li><NavLink to={"/galeria"} className="sticky-active">Galeria</NavLink></li>
+                                <li><NavLink to={"/nosotros"} className="sticky-active">Nosotros</NavLink></li>
+                                <li><NavLink to={"/contacto"} className="sticky-active">Contacto</NavLink></li>
                             </ul>
 
                             <NavLink to={"/"} className="boton-book boton boton-personalizado boton-sm menu-absolute mr-3">Admision</NavLink>

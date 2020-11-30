@@ -45,7 +45,7 @@ const InvitedHomeSeccionNosotros = () => {
                     </div>
                     <div className="col-lg-6 aos-init aos-animate" data-aos="fade-up" data-aos-delay="400">
                         <div className="bg-1"></div>
-                        <img src={nosotros} alt="Image" className="img-fluid rounded" />
+                        <img src={nosotros} alt="Nosotros" className="img-fluid rounded" />
                     </div>
                 </div>
             </div>

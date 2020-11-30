@@ -5,7 +5,7 @@ const InvitedHomeSeccionPensionItem = ({ nivel }) => {
     return (
         <div className="col-md-6 mb-4 mb-lg-0 col-lg-4 aos-init aos-animate" data-aos="fade-up" data-aos-delay={nivel.delay}>
             <div className="pricing">
-                <div className="pricing-img mb-4"><img src={nivel.imagen} alt="Image" className="img-fluid"
+                <div className="pricing-img mb-4"><img src={nivel.imagen} alt={nivel.grado} className="img-fluid"
                     data-pagespeed-url-hash="2058289295" /></div>
                 <div className="pricing-body">
                     <h3 className="pricing-plan">{nivel.grado}</h3>

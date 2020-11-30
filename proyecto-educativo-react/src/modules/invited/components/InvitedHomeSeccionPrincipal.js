@@ -3,7 +3,7 @@ import { HashLink } from 'react-router-hash-link';
 
 import "./InvitedHomeSeccionPrincipal.css";
 
-const InvitedHomeSeccionPrincipal = () => {
+const InvitedHomeSeccionPrincipal = ({ texto }) => {
 
     return (
         <>
@@ -14,12 +14,10 @@ const InvitedHomeSeccionPrincipal = () => {
                             <div className="row justify-content-left">
                                 <div className="col-lg-6 text-center text-lg-left">
                                     <h1 className="mb-4 heading text-white aos-init aos-animate" data-aos="fade-up"
-                                        data-aos-delay="100">Centro de Aprendizaje para sus Hijos</h1>
+                                        data-aos-delay="100">{texto.titulo}</h1>
                                     <div className="mb-5 text-white desc mx- aos-init aos-animate" data-aos="fade-up"
                                         data-aos-delay="200">
-                                        <p>
-                                            Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.
-                                        </p>
+                                        <p>{texto.parrafo}</p>
                                     </div>
                                     <p className="mb-0 aos-init aos-animate" data-aos="fade-up" data-aos-delay="300">
                                         <HashLink className="boton boton-personalizado" to={`/#oferta-educativa`}>Explorar</HashLink>
