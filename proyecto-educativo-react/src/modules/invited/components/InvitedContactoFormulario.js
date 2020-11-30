@@ -28,13 +28,13 @@ const InvitedContactoFormulario = () => {
                                 <div className="email mt-4">
                                     <i className="fas fa-envelope"></i>
                                     <h4 className="mb-2">Email:</h4>
-                                    <p>info@Colorlib</p>
+                                    <p>info@mydomain.com</p>
                                 </div>
 
                                 <div className="phone mt-4">
                                     <i className="fas fa-phone-alt"></i>
                                     <h4 className="mb-2">Teléfono:</h4>
-                                    <p>+1 1234 55488 55</p>
+                                    <p>+51(1) 456-7890</p>
                                 </div>
 
                             </div>

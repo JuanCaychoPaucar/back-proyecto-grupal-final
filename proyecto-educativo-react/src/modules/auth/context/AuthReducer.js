@@ -20,6 +20,9 @@ const AuthReducer = (stateActual, action) => {
                 autenticado: false,
                 cargando: false,
             }
+
+        default:
+            console.log("Seleccion incorrecta");
     }
 };
 
