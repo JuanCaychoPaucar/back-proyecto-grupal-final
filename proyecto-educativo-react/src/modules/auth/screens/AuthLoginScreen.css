@@ -1,0 +1,157 @@
+.body-login {
+  margin: 0;
+  padding: 0;
+  background: url(./../../../assets/img/login.jpg) no-repeat 0px 0px;
+  min-height: 100vh;
+  min-width: 100vw;
+  background-size: cover;
+  font-family: "Raleway", sans-serif;
+}
+
+.contenedor-formulario {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.formulario-login-h2 {
+  margin: 0;
+  color: var(--rojo-1);
+  font-size: 25px;
+  font-weight: 400;
+  text-align: center;
+  letter-spacing: 1px;
+  padding-bottom: 30px;
+  font-family: "Raleway", sans-serif;
+}
+
+.formulario-login {
+  background: var(--negro-5);
+  width: 500px;
+  margin: 0 auto;
+  padding: 3em;
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+
+.group {
+  display: flex;
+  padding: 15px 5px;
+  background-color: var(--blanco);
+}
+
+.group i {
+  color: var(--rojo-1);
+  font-size: 20px;
+  padding: 0 10px;
+}
+
+.formulario-login-group {
+  margin: 20px 0;
+}
+
+.formulario-login-group .formulario-login-group-label {
+  display: block;
+  text-transform: uppercase;
+  font-size: 13px;
+  color: var(--plomo-3);
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+  font-style: italic;
+  font-family: "Raleway", sans-serif;
+}
+
+.formulario-login-group-input[type="email"],
+.formulario-login-group-input[type="password"] {
+  width: 100%;
+  border: none;
+  box-sizing: border-box;
+  background: transparent;
+  color: var(--negro-1);
+  font-family: "Raleway", sans-serif;
+}
+
+.formulario-login-group-input[type="email"]:focus,
+.formulario-login-group-input[type="password"]:focus {
+  outline: none;
+  font-family: "Raleway", sans-serif;
+}
+
+.formulario-login-group-button {
+  background: var(--rojo-1);
+  color: var(--blanco);
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: none;
+  padding: 12px 60px;
+  cursor: pointer;
+  width: 100%;
+  border-radius: 6px;
+  font-family: "Raleway", sans-serif;
+}
+
+.formulario-login-group-button:hover {
+  background-color: var(--naranja-1);
+  transition-duration: 5s;
+  font-family: "Raleway", sans-serif;
+}
+
+.forgot {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
+}
+
+.forgot-password {
+  color: var(--plomo-3);
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.forgot p {
+  color: var(--plomo-3);
+  text-align: center;
+  margin: 0px;
+  font-size: 13px;
+}
+
+/*-- /responsive design --*/
+
+@media (max-width: 640px) {
+  p.copyright-agileinfo {
+    letter-spacing: 1px;
+  }
+}
+
+@media (max-width: 568px) {
+  p.copyright-agileinfo {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .formulario-login {
+    margin: 0 3vw;
+    max-width: 500px;
+  }
+  p.copyright-agileinfo {
+    line-height: 1.8em;
+  }
+}
+
+@media (max-width: 320px) {
+  .formulario-login {
+    margin: 0 3vw;
+    max-width: 500px;
+  }
+  .forgot p {
+    text-align: left;
+  }
+  .forgot {
+    display: block;
+  }
+}
+
+/*-- /responsive design --*/

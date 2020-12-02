@@ -12,10 +12,12 @@
   /* COLORES */
   --blanco: #ffffff;
   --humo: #f8f9fa;
-  --negro-2: #333;
+  --humo-2: #f1f1ef;
   --negro-1: #000000;
+  --negro-2: #333;
   --negro-3: #43434d;
   --negro-4: #303030;
+  --negro-5: rgba(0, 0, 0, 0.412);
   --plomo-1: #7b7b7b;
   --plomo-2: #ccc;
   --plomo-3: #e6e6e6;
@@ -35,7 +37,8 @@
   --celeste-2: #edf7fb;
   --violeta-1: #6b53ab;
   --violeta-2: #f0edf6;
-  --humo-2: #f1f1ef;
+  --rojo-1: #fc3955;
+  
 
   /* FONTS */
   --fuente-libre: "Libre Baskerville";

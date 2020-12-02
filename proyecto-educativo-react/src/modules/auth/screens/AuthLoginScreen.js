@@ -1,8 +1,8 @@
 import React, { useContext, useState } from 'react';
 import { postLogin } from '../../../services/authServices';
-
 import AuthContext from '../context/AuthContext';
 
+import "./AuthLoginScreen.css";
 
 const AuthLoginScreen = ({ history }) => {
 
@@ -38,36 +38,49 @@ const AuthLoginScreen = ({ history }) => {
     };
 
     return (
-        <main className="login">
-            <div className="login__form">
-                <h1>Inicio de Sesión</h1>
-                <form className="formulario" onSubmit={onSubmit}>
-                    <label htmlFor="">Email:</label>
-                    <input
-                        type="email"
-                        className="formulario__input"
-                        placeholder="Email"
-                        name="correo"
-                        value={formulario.correo}
-                        onChange={handleChange}
-                    />
+        <div className="body-login">
+            <div className="contenedor-formulario">
+                <div className="formulario-login">
+                    <h2 className="formulario-login-h2">Iniciar Sesión</h2>
+                    <form onSubmit={onSubmit}>
 
-                    <label htmlFor="">Password:</label>
-                    <input
-                        type="password"
-                        className="formulario__input"
-                        placeholder="Password"
-                        name="password"
-                        value={formulario.password}
-                        onChange={handleChange}
-                    />
-
-                    <button className="formulario__submit" type="submit">
-                        Iniciar Sesión
-                    </button>
-                </form>
+                        <div className="formulario-login-group">
+                            <label className="formulario-login-group-label">Usuario:</label>
+                            <div className="group">
+                                <i className="fas fa-user"></i>
+                                <input
+                                    type="email"
+                                    className="formulario-login-group-input"
+                                    placeholder="Usuario"
+                                    name="correo"
+                                    value={formulario.correo}
+                                    onChange={handleChange}
+                                />
+                            </div>
+                        </div>
+                        <div className="formulario-login-group">
+                            <label className="formulario-login-group-label">Contraseña:</label>
+                            <div className="group">
+                                <i className="fas fa-unlock"></i>
+                                <input
+                                    type="password"
+                                    className="formulario-login-group-input"
+                                    placeholder="Contraseña"
+                                    name="password"
+                                    value={formulario.password}
+                                    onChange={handleChange}
+                                />
+                            </div>
+                        </div>
+                        <div className="forgot">
+                            <a className="forgot-password" href="!#">Olvidaste tu contraseña?</a>
+                            <p><input className="formulario-login-group-input" type="checkbox" />Mostrar contraseña</p>
+                        </div>
+                        <button className="formulario-login-group-button" type="submit">Ingresar</button>
+                    </form>
+                </div>
             </div>
-        </main>
+        </div>
     )
 }
 
