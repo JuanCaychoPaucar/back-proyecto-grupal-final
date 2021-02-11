@@ -3,5 +3,5 @@
 ### Colaboradores:
 - [Juan Caycho](https://github.com/JuanCaychoPaucar)
 - [Alessandro Giuffra](https://github.com/Agiuffra)
-- [Jesús Luján](https://github.com/jesuslujancardenas2412)
+- [Alex Jacha](https://github.com/ALEX-JACHA)
 - [Anthony Dueñas](https://github.com/AnthonyDval)
