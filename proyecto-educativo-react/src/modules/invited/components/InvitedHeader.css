@@ -25,8 +25,29 @@
   background: var(--humo-2);
 }
 
+.aula-virtual {
+  font-size: 9px;
+}
+
+.logo-principal {
+  height: 42px;
+}
+
+
 @media (min-width: 992px) {
   .site-menu-mobile {
     display: none;
+  }
+
+  .barra-menu-contenedor {
+    min-height: 50px;
+  }
+
+  .barra-menu {
+    min-height: 50px;
+  }
+
+  .barra-menu-colapso {
+    margin-top: 0px;
   }
 }

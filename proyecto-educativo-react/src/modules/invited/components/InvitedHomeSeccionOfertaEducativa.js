@@ -15,7 +15,7 @@ const data = [
         color: { background: "var(--verde-6)", border: "1px solid var(--verde-4)" },
         delay: "100",
         titulo: "Clases de Musica",
-        texto: "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts."
+        texto: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nisi est, facilisis ac tellus ac, egestas hendrerit magna."
     },
 
     {
@@ -24,7 +24,7 @@ const data = [
         color: { background: "var(--naranja-3)", border: "1px solid var(--naranja-1)" },
         delay: "200",
         titulo: "Clases de Matemática",
-        texto: "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts."
+        texto: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nisi est, facilisis ac tellus ac, egestas hendrerit magna."
     },
 
     {
@@ -33,7 +33,7 @@ const data = [
         color: { background: "var(--celeste-2)", border: "1px solid var(--celeste-1)" },
         delay: "300",
         titulo: "Clases de Inglés",
-        texto: "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts."
+        texto: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nisi est, facilisis ac tellus ac, egestas hendrerit magna."
     },
 
     {
@@ -42,7 +42,7 @@ const data = [
         color: { background: "var(--violeta-2)", border: "1px solid var(--violeta-1)" },
         delay: "100",
         titulo: "Comprensión Lectora",
-        texto: "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts."
+        texto: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nisi est, facilisis ac tellus ac, egestas hendrerit magna."
     },
 
     {
@@ -51,7 +51,7 @@ const data = [
         color: { background: "var(--verde-7)", border: "1px solid var(--verde-2)" },
         delay: "200",
         titulo: "Clases de Historia",
-        texto: "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts."
+        texto: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nisi est, facilisis ac tellus ac, egestas hendrerit magna."
     },
 
     {
@@ -60,7 +60,7 @@ const data = [
         color: { background: "var(--naranja-4)", border: "1px solid var(--naranja-2)" },
         delay: "300",
         titulo: "Clases Activas",
-        texto: "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts."
+        texto: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nisi est, facilisis ac tellus ac, egestas hendrerit magna."
     }
 ];
 
@@ -73,7 +73,7 @@ const InvitedHomeSeccionOfertaEducativa = () => {
                 <div className="row justify-content-center mb-5">
                     <div className="col-lg-7 text-center aos-init aos-animate" data-aos="fade-up" data-aos-delay="0">
                         <h2 className="line-bottom text-center mb-4">Nuestra Oferta Educativa</h2>
-                        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nisi est, facilisis ac tellus ac, egestas hendrerit magna.</p>
                     </div>
                 </div>
 

@@ -11,7 +11,7 @@ const docentes = [
         nombre: "Mina",
         apellido: "Collins",
         curso: "Profesora de matemáticas",
-        texto: "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.",
+        texto: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nisi est, facilisis ac tellus ac, egestas hendrerit magna.",
         imagen: staff_1,
         delay: "0",
     },
@@ -21,7 +21,7 @@ const docentes = [
         nombre: "Anderson",
         apellido: "Matthew",
         curso: "Profesor de música",
-        texto: "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.",
+        texto: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nisi est, facilisis ac tellus ac, egestas hendrerit magna.",
         imagen: staff_2,
         delay: "100",
     },
@@ -31,7 +31,7 @@ const docentes = [
         nombre: "Cynthia",
         apellido: "Misso",
         curso: "Profesora de inglés",
-        texto: "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.",
+        texto: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nisi est, facilisis ac tellus ac, egestas hendrerit magna.",
         imagen: staff_3,
         delay: "200",
     }
@@ -45,7 +45,7 @@ const InvitedPersonalSeccionDocentes = () => {
                     <div className="col-lg-7 text-center aos-init aos-animate" data-aos="fade-up" data-aos-delay="0">
                         <h2 className="line-bottom text-center mb-4">Nuestro Personal</h2>
                         <p>
-                            Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nisi est, facilisis ac tellus ac, egestas hendrerit magna.
                         </p>
                     </div>
                 </div>

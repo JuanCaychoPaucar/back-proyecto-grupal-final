@@ -8,7 +8,7 @@ const data = [
     {
         id: 1,
         grado: "Inicial",
-        texto: "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.",
+        texto: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nisi est, facilisis ac tellus ac, egestas hendrerit magna.",
         pension: 179.99,
         imagen: inicial,
         delay: "100"
@@ -17,7 +17,7 @@ const data = [
     {
         id: 2,
         grado: "Primaria",
-        texto: "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.",
+        texto: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nisi est, facilisis ac tellus ac, egestas hendrerit magna.",
         pension: 349.99,
         imagen: primaria,
         delay: "250"
@@ -26,7 +26,7 @@ const data = [
     {
         id: 3,
         grado: "Secundaria",
-        texto: "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.",
+        texto: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nisi est, facilisis ac tellus ac, egestas hendrerit magna.",
         pension: 599.99,
         imagen: secundaria,
         delay: "400"
@@ -42,7 +42,7 @@ const InvitedHomeSeccionPension = () => {
                     <div className="col-lg-7 text-center aos-init aos-animate" data-aos="fade-up" data-aos-delay="0">
                         <h2 className="line-bottom text-center mb-4">Pensión</h2>
                         <p>
-                            Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nisi est, facilisis ac tellus ac, egestas hendrerit magna.
                         </p>
                     </div>
                 </div>

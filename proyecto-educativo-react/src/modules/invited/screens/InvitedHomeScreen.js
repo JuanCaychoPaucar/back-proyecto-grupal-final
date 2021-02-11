@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 
 import InvitedHeader from '../components/InvitedHeader';
 import InvitedHomeSeccionOfertaEducativa from '../components/InvitedHomeSeccionOfertaEducativa';
@@ -9,13 +9,25 @@ import InvitedHomeSeccionNosotros from '../components/InvitedHomeSeccionNosotros
 import InvitedHomeSeccionPension from '../components/InvitedHomeSeccionPension';
 import InvitedFooter from '../components/InvitedFooter';
 
+import InvitedContext from '../context/InvitedContext';
+
 const texto = {
     titulo: "Centro de Aprendizaje para sus Hijos",
-    parrafo: "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.",
+    parrafo: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nisi est, facilisis ac tellus ac, egestas hendrerit magna.",
 };
 
-
 const InvitedHomeScreen = () => {
+
+    const { informacion, cargarInformacionInstitucional } = useContext(InvitedContext);
+
+    const cargaInfo = () => {
+        cargarInformacionInstitucional()
+    }
+
+
+    useEffect(() => {
+        cargaInfo();
+    }, [])
 
     return (
         <>

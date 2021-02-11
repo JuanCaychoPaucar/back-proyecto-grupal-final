@@ -1,3 +1,29 @@
-.fondo-principal{
-    background-image: url("./../../../assets/img/principal.jpg");
+.fondo-principal {
+  transition: 2s;
+  background-image: url("./../../../assets/img/principal.jpg");
+}
+
+.fondo-principal-2 {
+  transition: 2s;
+  background-image: url("./../../../assets/img/principal2.jfif");
+}
+
+.fondo-principal-3 {
+  transition: 2s;
+  background-image: url("./../../../assets/img/principal3.jfif");
+}
+
+.fondo-principal-4 {
+  transition: 2s;
+  background-image: url("./../../../assets/img/principal4.jfif");
+}
+
+.fondo-principal-5 {
+  transition: 2s;
+  background-image: url("./../../../assets/img/principal5.jpg");
+}
+
+.fondo-principal-6 {
+  transition: 2s;
+  background-image: url("./../../../assets/img/principal6.jfif");
 }

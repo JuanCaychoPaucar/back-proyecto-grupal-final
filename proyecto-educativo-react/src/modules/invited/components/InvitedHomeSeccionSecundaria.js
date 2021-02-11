@@ -13,7 +13,7 @@ const InvitedHomeSeccionSecundaria = () => {
                             Educación para los Líderes del Mañana
                         </h2>
                         <p className="text-white h5 mb-4 aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
-                            Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nisi est, facilisis ac tellus ac, egestas hendrerit magna.
                         </p>
                         <p>
                             <NavLink to={"/"} className="boton boton-personalizado aos-init aos-animate" data-aos="fade-up" data-aos-delay="200">Admision</NavLink>

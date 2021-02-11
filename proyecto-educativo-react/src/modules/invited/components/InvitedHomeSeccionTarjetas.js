@@ -13,7 +13,7 @@ const data = [
         color: "color-1",
         delay: "0",
         titulo: "Aprender",
-        texto: "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts."
+        texto: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nisi est, facilisis ac tellus ac, egestas hendrerit magna."
     },
 
     {
@@ -22,7 +22,7 @@ const data = [
         color: "color-2",
         delay: "100",
         titulo: "Jugar",
-        texto: "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts."
+        texto: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nisi est, facilisis ac tellus ac, egestas hendrerit magna."
     },
 
     {
@@ -31,7 +31,7 @@ const data = [
         color: "color-3",
         delay: "200",
         titulo: "Socializar",
-        texto: "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts."
+        texto: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nisi est, facilisis ac tellus ac, egestas hendrerit magna."
     }
 ];
 

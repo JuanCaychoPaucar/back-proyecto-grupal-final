@@ -7,6 +7,7 @@ import InvitedNosotrosScreen from './screens/InvitedNosotrosScreen';
 import InvitedPersonalScreen from './screens/InvitedPersonalScreen';
 
 const InvitedRouter = () => {
+
     return (
         <Switch>
             <Route path={"/galeria"} component={InvitedGaleriaScreen} />

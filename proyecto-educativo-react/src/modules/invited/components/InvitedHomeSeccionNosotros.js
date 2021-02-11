@@ -15,14 +15,14 @@ const InvitedHomeSeccionNosotros = () => {
                             Nosotros
                         </h2>
                         <p data-aos="fade-up" data-aos-delay="100" className="aos-init aos-animate">
-                            Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.
-                            Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nisi est, facilisis ac tellus ac, egestas hendrerit magna.
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nisi est, facilisis ac tellus ac, egestas hendrerit magna.
                         </p>
                         <ul className="list-unstyled mb-5 primary aos-init aos-animate" data-aos="fade-up"
                             data-aos-delay="200">
-                            <li><i className="fas fa-check mr-2"></i>Separated they live</li>
-                            <li><i className="fas fa-check mr-2"></i>Bookmarksgrove right at the coast</li>
-                            <li><i className="fas fa-check mr-2"></i>large language ocean</li>
+                            <li><i className="fas fa-check mr-2"></i>Lorem ipsum dolor</li>
+                            <li><i className="fas fa-check mr-2"></i>Lorem ipsum dolor sit amet, consectetur</li>
+                            <li><i className="fas fa-check mr-2"></i>Lorem ipsum dolor</li>
                         </ul>
                         <div className="row count-numbers mb-5">
                             <div className={"col-4 col-lg-4 aos-init aos-animate"} data-aos="fade-up" data-aos-delay="0">

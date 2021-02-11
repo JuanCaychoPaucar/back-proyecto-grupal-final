@@ -1,6 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import InvitedContext from '../context/InvitedContext';
+import InvitedFooter from './InvitedFooter';
 
 const InvitedContactoFormulario = () => {
+
+    const { informacion } = useContext(InvitedContext);
+
     return (
         <>
             <div className="untree_co-section">
@@ -13,28 +18,29 @@ const InvitedContactoFormulario = () => {
                                 <div className="address mt-4">
                                     <i className="fas fa-map-marker-alt"></i>
                                     <h4 className="mb-2">Direccion:</h4>
-                                    <p>43 Raymouth Rd. Baltemoer, London 3910</p>
+                                    <p>{informacion.direccion}</p>
                                 </div>
 
                                 <div className="open-hours mt-4">
                                     <i className="far fa-clock"></i>
                                     <h4 className="mb-2">Horario:</h4>
                                     <p>
-                                        Lunes-Viernes:<br></br>
-                                        08:00 AM - 04:00 PM
+                                        {informacion.horario[0]}<br></br>
+                                        {informacion.horario[1]}
                                     </p>
                                 </div>
 
                                 <div className="email mt-4">
                                     <i className="fas fa-envelope"></i>
                                     <h4 className="mb-2">Email:</h4>
-                                    <p>info@mydomain.com</p>
+                                    <p>{informacion.correo}</p>
                                 </div>
 
                                 <div className="phone mt-4">
                                     <i className="fas fa-phone-alt"></i>
                                     <h4 className="mb-2">Teléfono:</h4>
-                                    <p>+51(1) 456-7890</p>
+                                    <p>+{informacion.telefono1}</p>
+                                    <p>+{informacion.telefono2}</p>
                                 </div>
 
                             </div>

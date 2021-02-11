@@ -6,7 +6,7 @@ import InvitedPersonalSeccionDocentes from '../components/InvitedPersonalSeccion
 
 const texto = {
     titulo: "Nuestro Personal",
-    parrafo: "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.",
+    parrafo: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nisi est, facilisis ac tellus ac, egestas hendrerit magna.",
 };
 
 const InvitedPersonalScreen = () => {
