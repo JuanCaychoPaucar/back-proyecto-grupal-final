@@ -65,7 +65,7 @@ const InvitedHeader = () => {
                             </NavLink>
 
                             <ul className="js-clone-nav d-none d-lg-inline-block site-menu mt-1">
-                                <li><NavLink to={"/"} className="sticky-active">Home</NavLink></li>
+                                <li><NavLink to={"/"} className="sticky-active">Inicio</NavLink></li>
                                 <li><NavLink to={"/personal"} className="sticky-active">Personal</NavLink></li>
                                 <li><NavLink to={"/galeria"} className="sticky-active">Galeria</NavLink></li>
                                 <li><NavLink to={"/nosotros"} className="sticky-active">Nosotros</NavLink></li>
@@ -85,11 +85,10 @@ const InvitedHeader = () => {
                                     <Nav className="mr-auto mt-2 mt-lg-0">
                                         <ul className="site-menu-mobile">
                                             <li><NavLink to={"/"} className="site-menu-mobile-item">Inicio</NavLink></li>
-                                            <li><NavLink to={"/"} className="site-menu-mobile-item">Personal</NavLink></li>
-                                            <li><NavLink to={"/"} className="site-menu-mobile-item">Noticias</NavLink></li>
-                                            <li><NavLink to={"/"} className="site-menu-mobile-item">Galeria</NavLink></li>
-                                            <li><NavLink to={"/"} className="site-menu-mobile-item">Nosotros</NavLink></li>
-                                            <li><NavLink to={"/"} className="site-menu-mobile-item">Contacto</NavLink></li>
+                                            <li><NavLink to={"/personal"} className="site-menu-mobile-item">Personal</NavLink></li>
+                                            <li><NavLink to={"/galeria"} className="site-menu-mobile-item">Galeria</NavLink></li>
+                                            <li><NavLink to={"/nosotros"} className="site-menu-mobile-item">Nosotros</NavLink></li>
+                                            <li><NavLink to={"/contacto"} className="site-menu-mobile-item">Contacto</NavLink></li>
                                         </ul>
                                     </Nav>
                                 </Navbar.Collapse>

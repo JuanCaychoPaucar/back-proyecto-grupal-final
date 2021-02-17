@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { postLogin } from '../../../services/authServices';
 import AuthContext from '../context/AuthContext';
 
@@ -8,7 +8,7 @@ const AuthLoginScreen = ({ history }) => {
 
     // history nos ayuda a navegar por el hisotrial de las paginas
 
-    const { iniciarSesion } = useContext(AuthContext);
+    const { iniciarSesion, usu_tipo } = useContext(AuthContext);
 
     const [formulario, setFormulario] = useState({
         correo: "",
@@ -29,13 +29,24 @@ const AuthLoginScreen = ({ history }) => {
 
             if (data.ok) {
                 // TODO llamar a iniciarSesion del context y enviarle el token
-                iniciarSesion(data.token);
-                console.log("Hola");
+                iniciarSesion(data.content);
+                console.log("USU_TIPO : ", usu_tipo);
 
-                history.push("admin/");
             }
         });
     };
+
+    useEffect(() => {
+        if (usu_tipo === "admin") {
+            history.push("admin/");
+        };
+        if (usu_tipo === "profe") {
+            console.log("SOY PROFE");
+        };
+        if (usu_tipo === "alumno") {
+            console.log("SOY ALUMNO");
+        }
+    }, [usu_tipo])
 
     return (
         <div className="body-login">

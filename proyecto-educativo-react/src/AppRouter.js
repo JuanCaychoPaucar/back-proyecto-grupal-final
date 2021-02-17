@@ -4,14 +4,20 @@ import AdminRouter from './modules/admin/AdminRouter';
 import AuthRouter from './modules/auth/AuthRouter';
 import InvitedRouter from './modules/invited/InvitedRouter';
 
-import InvitedState, { } from './modules/invited/context/InvitedState';
+import AdminState from './modules/admin/context/AdminState';
+import InvitedState from './modules/invited/context/InvitedState';
+
 
 const AppRouter = () => {
     return (
         <Router>
             <Switch>
                 <Route path={"/auth"} component={AuthRouter} />
-                <Route path={"/admin"} component={AdminRouter} />
+                
+                {/* <AdminState> */}
+                    <Route path={"/admin"} component={AdminRouter} />
+                {/* </AdminState> */}
+
                 <InvitedState>
                     <Route path={"/"} component={InvitedRouter} />
                 </InvitedState>
