@@ -4,7 +4,7 @@ import AuthContext from './modules/auth/context/AuthContext';
 
 const RutaPrivada = ({ path, componente: Componente }) => {
 
-    const { autenticado, cargando } = useContext(AuthContext);
+    const { autenticado, cargando, token } = useContext(AuthContext);
 
     return (
         cargando ?

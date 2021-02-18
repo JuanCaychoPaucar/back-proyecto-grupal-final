@@ -3,7 +3,7 @@ import AuthContext from '../../../auth/context/AuthContext';
 import AdminContext from '../../context/AdminContext';
 import Swal from "sweetalert2";
 
-import { getUsuarioById, putUsuario } from '../../../../services/adminServices';
+import { getUsuarioById, putUsuario, postSubirImagen } from '../../../../services/adminServices';
 import imagenCarga from '../../../../assets/img/spinner_book.gif';
 
 const formularioVacio = {
@@ -20,7 +20,7 @@ const formularioVacio = {
     usuario_telefono: "",
     usuario_foto: null,
     usuario_estado: false,
-    usuario_tipo: null
+    usuario_tipo: ""
 };
 
 const AdminUsuarioDetallesScreen = ({ id }) => {
@@ -28,7 +28,34 @@ const AdminUsuarioDetallesScreen = ({ id }) => {
     const { setearIdUsuario, setearCargandoModal, cargandoModal, usuariosListarPorTipo, usu_tipo } = useContext(AdminContext);
     const [formulario, setFormulario] = useState(formularioVacio);
     const [imagenSeleccionada, setImagenSeleccionada] = useState([]);
+    const [vista, setVista] = useState("");
     const [modo, setModo] = useState("visor");
+
+    const validarFormulario = () => {
+        if (
+            formulario.usuario_nombre.trim() === "" ||
+            formulario.usuario_apep.trim() === "" ||
+            formulario.usuario_apem.trim() === "" ||
+            formulario.usuario_fechnac.trim() === "" ||
+            formulario.usuario_sexo.trim() === "" ||
+            formulario.usuario_direccion.trim() === "" ||
+            formulario.usuario_dni.trim() === "" ||
+            formulario.usuario_email.trim() === "" ||
+            formulario.usuario_tipo.trim() === ""
+        ) {
+            console.log("COMPLETAR LOS CAMPOS OBLIGATORIOS");
+            Swal.fire({
+                title: "Campos incompletos!",
+                text: "Verificar los campos obligatorios",
+                icon: "warning"
+            });
+            return false;
+        } else {
+            console.log("ya");
+            return true;
+        }
+    }
+
 
     const traerUsuario = async () => {
         setearIdUsuario(id);
@@ -77,41 +104,85 @@ const AdminUsuarioDetallesScreen = ({ id }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        Swal.fire({
-            title: "¿Editar?",
-            text: "¿Seguro que desea editar el registro de la mascota?",
-            icon: "question",
-            showCancelButton: true,
-        }).then(({ isConfirmed }) => {
-            if (isConfirmed) {
-                setearCargandoModal(true);
-                putUsuario(formulario, token).then((rpta) => {
-                    console.log("RESPUESTA", rpta);
-                    if (rpta.ok) {
-                        Swal.fire({
-                            title: "Registro actualizado!",
-                            text: "El registro se ha actualizado exitosamente",
-                            icon: "success",
-                            timer: 1500,
-                            showConfirmButton: false,
-                        });
-                        traerUsuario();
-                        usuariosListarPorTipo(usu_tipo);
-                        setearCargandoModal(false);
-                    }
-                })
-            }
-        });
+        let validacion = validarFormulario();
+
+        if (validacion) {
+
+            Swal.fire({
+                title: "¿Editar?",
+                text: "¿Seguro que desea editar el registro de la mascota?",
+                icon: "question",
+                showCancelButton: true,
+            }).then(({ isConfirmed }) => {
+                if (isConfirmed) {
+                    setearCargandoModal(true);
+
+                    putUsuario(formulario, token).then((rpta) => {
+                        console.log("RESPUESTA", rpta);
+                        if (rpta.ok) {
+
+                            if (imagenSeleccionada.length === 0) {
+                                Swal.fire({
+                                    title: "Registro actualizado!",
+                                    text: "El registro se ha actualizado exitosamente",
+                                    icon: "success",
+                                    timer: 1500,
+                                    showConfirmButton: false,
+                                });
+
+                            } else {
+                                // ACTUALIZAMOS LA IMAGEN
+                                const formData = new FormData();
+                                formData.append("imagen", imagenSeleccionada);
+
+                                postSubirImagen(formulario.usuario_id, formData, token).then((rpta) => {
+                                    // console.log("RESPUESTA SUBIDA IMAGEN", rpta);
+                                    if (rpta.ok) {
+                                        setearCargandoModal(false);
+                                        Swal.fire({
+                                            title: "Registro Actualizado!",
+                                            text: "El usuario se ha actualizado exitosamente",
+                                            icon: "success",
+                                            timer: 1500,
+                                            showConfirmButton: false,
+                                        });
+                                    }
+                                });
+                            }
+
+                            traerUsuario();
+                            usuariosListarPorTipo(usu_tipo);
+                            setearCargandoModal(false);
+                        }
+                    });
+                }
+            });
+        }
+    };
+
+
+    const visualizarImagen = (e) => {
+        let reader = new FileReader();
+        reader.onload = function (e) {
+            setVista(e.target.result);
+        }
+        reader.readAsDataURL(e.target.files[0]);
 
     };
 
 
     const seleccionarImagen = (e) => {
-        const formData = new FormData();
-        const imagen = e.target.files[0];
-        setImagenSeleccionada(imagen);
-        // console.log("IMAGEN : ", imagen);
-    }
+        let imagen = e.target.files[0];
+        if (typeof imagen === "undefined") {
+            setImagenSeleccionada([]);
+            setVista("");
+        } else {
+            setImagenSeleccionada(imagen);
+            visualizarImagen(e);
+        }
+
+        console.log("IMAGEN 1 : ", imagenSeleccionada);
+    };
 
 
     useEffect(() => {
@@ -137,12 +208,12 @@ const AdminUsuarioDetallesScreen = ({ id }) => {
                 <div className="form-row">
                     <div className="form-group col-md-4 border border-dark">
                         <figure className="figure-img">
-                            <img className="rounded mx-auto my-auto d-block imagen-usuario" src={formulario.usuario_foto} alt="" />
+                            <img className="rounded mx-auto my-auto d-block imagen-usuario" src={vista === "" ? formulario.usuario_foto : vista} alt="" />
                         </figure>
                     </div>
                     <div className="form-group col-md-8">
                         <div className="form-group">
-                            <label htmlFor="">Nombre</label>
+                            <label htmlFor="">Nombre <span className="text-danger font-weight-bold">*</span></label>
                             <input
                                 type="text"
                                 className="form-control"
@@ -155,7 +226,7 @@ const AdminUsuarioDetallesScreen = ({ id }) => {
                         </div>
 
                         <div className="form-group">
-                            <label htmlFor="">Apellido Paterno</label>
+                            <label htmlFor="">Apellido Paterno <span className="text-danger font-weight-bold">*</span></label>
                             <input
                                 type="text"
                                 className="form-control"
@@ -168,7 +239,7 @@ const AdminUsuarioDetallesScreen = ({ id }) => {
                         </div>
 
                         <div className="form-group">
-                            <label htmlFor="">Apellido Materno</label>
+                            <label htmlFor="">Apellido Materno <span className="text-danger font-weight-bold">*</span></label>
                             <input
                                 type="text"
                                 className="form-control"
@@ -184,7 +255,7 @@ const AdminUsuarioDetallesScreen = ({ id }) => {
 
                 <div className="form-row">
                     <div className="form-group col-md-4">
-                        <label htmlFor="">DNI</label>
+                        <label htmlFor="">DNI <span className="text-danger font-weight-bold">*</span></label>
                         <input
                             type="text"
                             className="form-control"
@@ -197,7 +268,7 @@ const AdminUsuarioDetallesScreen = ({ id }) => {
                     </div>
 
                     <div className="form-group col-md-4">
-                        <label htmlFor="">Sexo</label>
+                        <label htmlFor="">Sexo <span className="text-danger font-weight-bold">*</span></label>
                         <select
                             className="form-control"
                             name="usuario_sexo"
@@ -211,7 +282,7 @@ const AdminUsuarioDetallesScreen = ({ id }) => {
                         </select>
                     </div>
                     <div className="form-group col-md-4">
-                        <label htmlFor="">Fecha nacimiento</label>
+                        <label htmlFor="">Fecha nacimiento <span className="text-danger font-weight-bold">*</span></label>
                         <input
                             type="date"
                             className="form-control"
@@ -249,7 +320,7 @@ const AdminUsuarioDetallesScreen = ({ id }) => {
                         />
                     </div>
                     <div className="form-group col-md-8">
-                        <label htmlFor="">Email</label>
+                        <label htmlFor="">Email <span className="text-danger font-weight-bold">*</span></label>
                         <input
                             type="email"
                             className="form-control"
@@ -269,12 +340,13 @@ const AdminUsuarioDetallesScreen = ({ id }) => {
                         className="form-control"
                         accept="image/png, image/jpeg"
                         onChange={seleccionarImagen}
+                        disabled={modo === "visor" ? true : false}
                     />
                 </div>
 
-                <div className="form-group">
-                    <img src="" alt="" style={{ width: "200px" }} />
-                </div>
+                {/* <div className="form-group">
+                    <img src={vista} alt="" style={{ width: "200px" }} />
+                </div> */}
 
                 <div className="form-row">
                     <div className="form-group col-md-6">

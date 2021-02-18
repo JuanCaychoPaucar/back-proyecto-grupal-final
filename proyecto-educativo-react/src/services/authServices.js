@@ -36,7 +36,7 @@ export const getUsuarioPorCorreo = async (correo) => {
 
 
 export const verificarToken = async (token) => {
-    const peticion = await fetch(`${URL_BACKEND}/verificar`, {
+    const peticion = await fetch(`${URL_BACKEND}/isLogedIn`, {
         method: "POST",
         headers: {
             "Authorization": `Bearer ${token}`,

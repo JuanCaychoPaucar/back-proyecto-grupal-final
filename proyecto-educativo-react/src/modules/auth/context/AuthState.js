@@ -26,6 +26,7 @@ const AuthState = (props) => {
 
     const iniciarSesionConLocalStorage = () => {
         const token = localStorage.getItem("token");
+        console.log("token local storage", token);
 
         if (token) {
             // verificar el token con el backend
@@ -33,17 +34,9 @@ const AuthState = (props) => {
                 console.log(data);
 
                 if (data.ok) {
-                    const payload = token.split(".")[1];
-                    const payloadDesencriptado = window.atob(payload);
-                    const payloadJSON = JSON.parse(payloadDesencriptado);
 
-                    dispatch({
-                        type: "INICIAR_SESION",
-                        data: {
-                            ...payloadJSON,
-                            token: token,
-                        },
-                    });
+                    iniciarSesion(token);
+
                 } else {
                     dispatch({
                         type: "CERRAR_SESION",
@@ -52,6 +45,7 @@ const AuthState = (props) => {
 
             });
         } else {
+            
             dispatch({
                 type: "CERRAR_SESION",
             });
@@ -59,7 +53,7 @@ const AuthState = (props) => {
     };
 
     useEffect(() => {
-        // iniciarSesionConLocalStorage();
+        iniciarSesionConLocalStorage();
     }, []);
 
     /**
@@ -136,6 +130,7 @@ const AuthState = (props) => {
     };
 
     const cerrarSesion = () => {
+        localStorage.removeItem("token");
         dispatch({
             type: "CERRAR_SESION",
         });

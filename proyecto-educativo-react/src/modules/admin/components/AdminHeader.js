@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import AuthContext from '../../auth/context/AuthContext';
 
 const AdminHeader = () => {
-    const { usu_nombre, usu_apellido_pat, usu_apellido_mat } = useContext(AuthContext);
+    const { usu_nombre, usu_apellido_pat, usu_apellido_mat, cerrarSesion } = useContext(AuthContext);
 
     return (
         <Navbar bg="dark" variant="dark">
@@ -29,8 +29,18 @@ const AdminHeader = () => {
                 </NavDropdown>
 
                 <NavDropdown title="Grados" id="basic-nav-dropdown">
-                    <NavDropdown.Item to="/">Registro</NavDropdown.Item>
-                    <NavDropdown.Item>Listado</NavDropdown.Item>
+                    <Link
+                        className="dropdown-item"
+                        to={"/admin/grado/registro"}
+                    >
+                        Registro
+                    </Link>
+                    <Link
+                        className="dropdown-item"
+                        to={"/admin/grado/listado"}
+                    >
+                        Listado
+                    </Link>
                 </NavDropdown>
 
                 <NavDropdown title="Cursos" id="basic-nav-dropdown">
@@ -47,7 +57,8 @@ const AdminHeader = () => {
 
                 <Link
                     className=""
-                    to={"/"}
+                    onClick={cerrarSesion}
+                    to={""}
                 >
                     <Navbar.Text className="text-danger"><FontAwesomeIcon icon="power-off" /></Navbar.Text>
 

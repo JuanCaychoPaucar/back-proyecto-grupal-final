@@ -1,5 +1,33 @@
 import { URL_BACKEND } from "../environments/environments";
 
+export const postRegistroUsuario = async (objUsuario, token) => {
+    const peticion = await fetch(`${URL_BACKEND}/registrar`, {
+        method: "POST",
+        body: JSON.stringify(objUsuario),
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+        },
+    });
+    const data = await peticion.json();
+    return data;
+};
+
+
+export const postSubirImagen = async (id, formData, token) => {
+    const peticion = await fetch(`${URL_BACKEND}/fotoUsuario/${id}`, {
+        method: "POST",
+        body: formData,
+        headers: {
+            // "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+        },
+    });
+    const data = await peticion.json();
+    return data;
+};
+
+
 export const getUsuariosByTipo = async (tipo) => {
     const peticion = await fetch(`${URL_BACKEND}/usuarios/${tipo}`);
 

@@ -3,6 +3,9 @@ import AuthContext from '../../../auth/context/AuthContext';
 import AdminContext from '../../context/AdminContext';
 import Swal from "sweetalert2";
 
+import { postRegistroUsuario, postSubirImagen } from '../../../../services/adminServices';
+import imagenCarga from '../../../../assets/img/spinner_book.gif';
+
 const formularioVacio = {
     grado_id: null,
     usuario_nombre: "",
@@ -15,16 +18,18 @@ const formularioVacio = {
     usuario_email: "",
     usuario_telefono: "",
     usuario_foto: null,
-    usuario_tipo: null,
-    password: null,
+    usuario_tipo: "",
+    password: "",
 };
 
 const AdminUsuarioRegistroScreen = () => {
 
     const { token } = useContext(AuthContext);
+    const { cargandoUsuario, setearCargandoUsuario } = useContext(AdminContext);
 
     const [formulario, setFormulario] = useState(formularioVacio);
     const [imagenSeleccionada, setImagenSeleccionada] = useState([]);
+    const [vista, setVista] = useState("");
 
     const validarFormulario = () => {
         if (
@@ -57,28 +62,119 @@ const AdminUsuarioRegistroScreen = () => {
     };
 
 
+    const visualizarImagen = (e) => {
+        let reader = new FileReader();
+        reader.onload = function (e) {
+            setVista(e.target.result);
+        }
+        reader.readAsDataURL(e.target.files[0]);
+
+    };
+
+
+
+    const seleccionarImagen = (e) => {
+        let imagen = e.target.files[0];
+        if (typeof imagen === "undefined") {
+            setImagenSeleccionada([]);
+            setVista("");
+        } else {
+            setImagenSeleccionada(imagen);
+            visualizarImagen(e);
+        }
+
+        console.log("IMAGEN 1 : ", imagenSeleccionada);
+    };
+
+
+
+
+
     const handleSubmit = (e) => {
         e.preventDefault();
         let validacion = validarFormulario();
         if (validacion) {
             console.log("HACEMOS EL POST");
+            setearCargandoUsuario(true);
+
+            postRegistroUsuario(formulario, token).then((rpta) => {
+                console.log("RESPUESTA", rpta);
+                if (rpta.ok) {
+                    const payload = rpta.content.split(".")[1];
+                    const payloadDesencriptado = window.atob(payload);
+                    const payloadJSON = JSON.parse(payloadDesencriptado);
+                    const idNuevoUsuario = payloadJSON.id;
+
+                    //SUBIR IMAGEN
+                    console.log("IMAGEN SELECCIONADA", imagenSeleccionada);
+                    if (imagenSeleccionada.length === 0) {
+                        console.log("VACIO");
+                        setearCargandoUsuario(false);
+                        if (rpta.ok) {
+                            setearCargandoUsuario(false);
+                            Swal.fire({
+                                title: "Registro creado!",
+                                text: "El usuario se ha registrado exitosamente",
+                                icon: "success",
+                                timer: 1500,
+                                showConfirmButton: false,
+                            });
+                        }
+                    } else {
+                        // console.log("lleno");
+                        const formData = new FormData();
+                        // console.log("REGISTRO USUARIO PAYLOAD ID", idNuevoUsuario);
+                        // console.log("IMAGEN 2 : ", imagenSeleccionada);
+                        formData.append("imagen", imagenSeleccionada);
+                        // console.log("TOKEN ADMIN", token);
+
+                        // for (let pair of formData.entries()) {
+                        //     console.log("FORM DATA CONTENIDO : ", pair[0] + " " +  pair[1]);
+                        // }
+
+                        postSubirImagen(idNuevoUsuario, formData, token).then((rpta) => {
+                            // console.log("RESPUESTA SUBIDA IMAGEN", rpta);
+                            if (rpta.ok) {
+                                setearCargandoUsuario(false);
+                                Swal.fire({
+                                    title: "Registro creado!",
+                                    text: "El usuario se ha registrado exitosamente",
+                                    icon: "success",
+                                    timer: 1500,
+                                    showConfirmButton: false,
+                                });
+                            }
+                        });
+                    }
+
+                    // LIMPIAR FORMULARIO
+                    setFormulario(formularioVacio);
+                    setVista("");
+
+                } else {
+                    setearCargandoUsuario(false);
+                    Swal.fire({
+                        title: "Error al registrar!",
+                        text: rpta.content.errors[0].message,
+                        icon: "error",
+
+                    });
+                }
+            })
         }
     };
 
 
-    const seleccionarImagen = (e) => {
-        const formData = new FormData();
-        const imagen = e.target.files[0];
-        setImagenSeleccionada(imagen);
-        // console.log("IMAGEN : ", imagen);
-    };
+    useEffect(() => {
+
+    }, [vista])
 
 
     return (
         <>
             <form onSubmit={handleSubmit}>
-                {/* {
-                    cargandoModal ?
+                {
+                    cargandoUsuario ?
                         <div className="cargando">
                             <figure>
                                 <img className="imagen-carga" src={imagenCarga} alt="" />
@@ -86,12 +182,12 @@ const AdminUsuarioRegistroScreen = () => {
                         </div>
                         :
                         ""
-                } */}
+                }
 
                 <div className="form-row">
                     <div className="form-group col-md-4 border border-dark">
                         <figure className="figure-img">
-                            <img className="rounded mx-auto my-auto d-block imagen-usuario" src={formulario.usuario_foto} alt="" />
+                            <img className="rounded mx-auto my-auto d-block imagen-usuario" src={vista} alt="" />
                         </figure>
                     </div>
                     <div className="form-group col-md-8">
@@ -234,7 +330,7 @@ const AdminUsuarioRegistroScreen = () => {
                     </div>
                 </div>
 
-                {/* <div className="form-group">
+                <div className="form-group">
                     <label htmlFor="inputImagen">Imagen</label>
                     <input
                         type="file"
@@ -244,8 +340,8 @@ const AdminUsuarioRegistroScreen = () => {
                     />
                 </div>
 
-                <div className="form-group">
-                    <img src="" alt="" style={{ width: "200px" }} />
+                {/* <div className="form-group">
+                    <img src={vista} alt="" style={{ width: "200px" }} />
                 </div> */}
 
                 <div className="form-row">

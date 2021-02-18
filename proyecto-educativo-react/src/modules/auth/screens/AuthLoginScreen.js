@@ -30,13 +30,13 @@ const AuthLoginScreen = ({ history }) => {
             if (data.ok) {
                 // TODO llamar a iniciarSesion del context y enviarle el token
                 iniciarSesion(data.content);
-                console.log("USU_TIPO : ", usu_tipo);
-
+                // console.log("USU_TIPO : ", data.content.usuario_tipo);
             }
         });
     };
 
     useEffect(() => {
+        console.log("USU_TIPO : ", usu_tipo);
         if (usu_tipo === "admin") {
             history.push("admin/");
         };
