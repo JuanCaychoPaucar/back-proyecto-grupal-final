@@ -75,7 +75,7 @@ const AdminCursoDetallesScreen = ({ id }) => {
                     setearCargandoModal(true);
 
                     putCurso(formulario, token).then((rpta) => {
-                        console.log("respuesta modificacion curso", rpta);
+                        // console.log("respuesta modificacion curso", rpta);
                         if (rpta.ok) {
                             Swal.fire({
                                 title: "Registro actualizado!",
