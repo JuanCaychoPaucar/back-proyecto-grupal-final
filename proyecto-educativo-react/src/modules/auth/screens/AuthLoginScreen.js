@@ -41,10 +41,10 @@ const AuthLoginScreen = ({ history }) => {
             history.push("admin/");
         };
         if (usu_tipo === "profe") {
-            console.log("SOY PROFE");
+            history.push("profesor/");
         };
         if (usu_tipo === "alumno") {
-            console.log("SOY ALUMNO");
+            history.push("alumno/");
         }
     }, [usu_tipo])
 

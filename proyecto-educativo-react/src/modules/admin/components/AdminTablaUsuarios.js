@@ -8,7 +8,7 @@ import '../screens/usuario/AdminUsuarioDetallesScreen.css';
 
 const AdminTablaUsuarios = ({ usuarios }) => {
 
-    const { cargandoUsuario, cargandoModal, seleccion, setearCargandoUsuario, setearCargandoModal, setearSeleccion } = useContext(AdminContext);
+    const { cargandoUsuario, cargandoModal, seleccion, setearCargandoModal, setearSeleccion } = useContext(AdminContext);
 
     const [show, setShow] = useState(false);
     const handleClose = () => {

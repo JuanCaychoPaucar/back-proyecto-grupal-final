@@ -3,40 +3,9 @@ import { Button, Modal, Spinner } from 'react-bootstrap';
 import AdminCursoDetallesScreen from '../screens/curso/AdminCursoDetallesScreen';
 import AdminContext from '../context/AdminContext';
 
-const content = {
-    curso_id: 2,
-    curso_nombre: "Lenguaje",
-    curso_descripcion: "Aquí se aprende sobre la sintaxis y los acentos",
-    curso_horaini: 10,
-    curso_horafin: 12,
-    curso_aforo: 35,
-    usuario: {
-        usuario_id: 3,
-        usuario_nombre: "Luis",
-        usuario_apep: "Gutierrez",
-        usuario_apem: "Carrera",
-    },
-    grado: {
-        grado_id: 1,
-        grado_nivel: "Primaria",
-        grado_numero: "Primero",
-    }
-}
-
-const formularioVacio = {
-    curso_id: "",
-    curso_nombre: "",
-    curso_descripcion: "",
-    curso_horaini: "",
-    curso_horafin: "",
-    curso_aforo: "",
-    grado_id: "",
-    usuario_id: ""
-};
-
 const AdminTablaCursos = ({ cursos }) => {
 
-    const { cargandoUsuario, cargandoModal, seleccion, setearCargandoUsuario, setearCargandoModal, setearSeleccion, seleccionListadoCursos } = useContext(AdminContext);
+    const { cargandoUsuario, cargandoModal, seleccion, setearCargandoModal, setearSeleccion } = useContext(AdminContext);
 
     const [show, setShow] = useState(false);
 

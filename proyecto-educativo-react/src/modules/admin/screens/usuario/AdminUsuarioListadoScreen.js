@@ -1,10 +1,9 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { getUsuariosByTipo } from '../../../../services/adminServices';
+import React, { useContext, useEffect } from 'react';
 import AdminTablaUsuarios from '../../components/AdminTablaUsuarios';
 import AdminContext from '../../context/AdminContext';
 
 const AdminUsuarioListadoScreen = () => {
-    const { usu_tipo, usuarios, cargandoUsuario, setearCargandoUsuario, setearTipo, setearUsuarios, usuariosListarPorTipo, grados, gradosListarAll } = useContext(AdminContext);
+    const { usuarios, setearCargandoUsuario, setearTipo, setearUsuarios, usuariosListarPorTipo, grados, gradosListarAll } = useContext(AdminContext);
 
     const seleccionTipo = (e) => {
         let valor = e.target.value;

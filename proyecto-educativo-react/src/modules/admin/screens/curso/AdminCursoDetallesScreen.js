@@ -20,7 +20,7 @@ const formularioVacio = {
 
 const AdminCursoDetallesScreen = ({ id }) => {
     const { token } = useContext(AuthContext);
-    const { cargandoUsuario, setearCargandoUsuario, setearIdCurso, setearCargandoModal, cargandoModal, usu_tipo, grados, usuarios, gradosListarAll, cursosListarAll, cursosListarById, usuariosListarPorTipo, seleccionListadoCursos } = useContext(AdminContext);
+    const { cargandoUsuario, setearIdCurso, setearCargandoModal, grados, usuarios, gradosListarAll, cursosListarAll, cursosListarById, usuariosListarPorTipo, seleccionListadoCursos } = useContext(AdminContext);
     const [formulario, setFormulario] = useState(formularioVacio);
     const [modo, setModo] = useState("visor");
 

@@ -5,7 +5,6 @@ import Swal from "sweetalert2";
 
 import AdminTablaCursos from '../../components/AdminTablaCursos';
 
-import { postRegistroUsuario, postSubirImagen } from '../../../../services/adminServices';
 import imagenCarga from '../../../../assets/img/spinner_book.gif';
 
 const formularioVacio = {
@@ -15,7 +14,7 @@ const formularioVacio = {
 const AdminCursoListadoScreen = () => {
 
     const { token } = useContext(AuthContext);
-    const { cargandoUsuario, setearCargandoUsuario, seleccionListadoCursos, setearSeleccionListadoCursos, cursos, cursosListarAll, cursosListarById, setearCursos } = useContext(AdminContext);
+    const { seleccionListadoCursos, setearSeleccionListadoCursos, cursos, cursosListarAll, cursosListarById, setearCursos } = useContext(AdminContext);
 
     const [formulario, setFormulario] = useState(formularioVacio);
 

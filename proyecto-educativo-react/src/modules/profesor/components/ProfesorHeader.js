@@ -4,57 +4,56 @@ import { Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import AuthContext from '../../auth/context/AuthContext';
+import './ProfesorHeader.css';
 
-import './AdminHeader.css';
-
-const AdminHeader = () => {
+const ProfesorHeader = () => {
     const { usu_nombre, usu_apellido_pat, usu_apellido_mat, cerrarSesion } = useContext(AuthContext);
 
     return (
         <>
             <Navbar bg="dark" variant="dark" expand="lg">
-                <Navbar.Brand href="#home">ADMINISTRADOR</Navbar.Brand>
+                <Navbar.Brand href="#home">PROFESOR</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav" className="navbar-collapse-header-admin">
                     <Nav className="mr-auto">
-                        <NavDropdown title="Usuarios" id="basic-nav-dropdown">
+                        {/* <NavDropdown title="Usuarios" id="basic-nav-dropdown">
                             <Link
                                 className="dropdown-item"
                                 to={"/admin/usuario/registro"}
                             >
                                 Registro
-                    </Link>
+                            </Link>
 
                             <Link
                                 className="dropdown-item"
                                 to={"/admin/usuario/listado"}
                             >
                                 Listado
-                    </Link>
-                        </NavDropdown>
+                            </Link>
+                        </NavDropdown> */}
 
                         <Link
                             className="nav-link"
-                            to={"/admin/grado/registro"}
+                            to={"/profesor/curso"}
                         >
-                            Grados
-                </Link>
+                            Mis cursos
+                        </Link>
 
-                        <NavDropdown title="Cursos" id="basic-nav-dropdown">
+                        {/* <NavDropdown title="Cursos" id="basic-nav-dropdown">
                             <Link
                                 className="dropdown-item"
                                 to={"/admin/curso/registro"}
                             >
                                 Registro
-                    </Link>
+                            </Link>
 
                             <Link
                                 className="dropdown-item"
                                 to={"/admin/curso/listado"}
                             >
                                 Listado
-                    </Link>
-                        </NavDropdown>
+                            </Link>
+                        </NavDropdown> */}
                     </Nav>
                     <Nav>
                         <Navbar.Text className="mr-5">
@@ -83,4 +82,4 @@ const AdminHeader = () => {
     )
 }
 
-export default AdminHeader;
+export default ProfesorHeader;

@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer } from 'react';
+import React, { useReducer } from 'react';
 import AdminContext from './AdminContext';
 import AdminReducer from './AdminReducer';
 import { getUsuariosByTipo, getGrados, getCursos, getCursosById } from '../../../services/adminServices';

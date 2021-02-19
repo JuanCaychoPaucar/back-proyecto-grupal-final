@@ -57,13 +57,3 @@ const AdminRouter = () => {
 
 export default AdminRouter;
 
-// <>
-        //     <AdminHeader />
-
-        // <main className="container pt-5">
-        //     <Switch>
-        //         <RutaPrivada path={"/admin"} componente={AdminDashboardScreen} />  {/* la ruta mas general va abajo */}
-        //     </Switch>
-        // </main>
-
-        // </>

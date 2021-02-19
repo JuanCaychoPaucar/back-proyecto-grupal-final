@@ -1,15 +1,11 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { Spinner } from 'react-bootstrap';
 
 import AdminContext from '../context/AdminContext';
 
 const AdminTablaGrados = ({ grados, modo, setModo, setFormulario }) => {
 
-    const { cargandoSpinner, setearCargandoSpinner } = useContext(AdminContext);
-
-
-    // console.log("GRADOS TABLA", grados);
-    // console.log("MODO", modo);
+    const { cargandoSpinner } = useContext(AdminContext);
 
     return (
         <div className="row mt-4">
