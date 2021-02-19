@@ -13,10 +13,34 @@ const AdminReducer = (stateActual, action) => {
                 usu_id: action.data.usu_id,
             }
 
+        case "SETEAR_ID_CURSO":
+            return {
+                ...stateActual,
+                curso_id: action.data.curso_id,
+            }
+
         case "SETEAR_USUARIOS":
             return {
                 ...stateActual,
                 usuarios: action.data.usuarios,
+            }
+
+        case "SETEAR_GRADOS":
+            return {
+                ...stateActual,
+                grados: action.data.grados,
+            }
+
+        case "SETEAR_CURSOS":
+            return {
+                ...stateActual,
+                cursos: action.data.cursos,
+            }
+
+        case "SETEAR_CURSO_DETALLE":
+            return {
+                ...stateActual,
+                cursoDetalle: action.data.cursoDetalle,
             }
 
         case "SETEAR_CARGANDO_MODAL":
@@ -29,6 +53,30 @@ const AdminReducer = (stateActual, action) => {
             return {
                 ...stateActual,
                 cargandoUsuario: action.data.cargandoUsuario,
+            }
+
+        case "SETEAR_CARGANDO_GRADO":
+            return {
+                ...stateActual,
+                cargandoGrado: action.data.cargandoGrado,
+            }
+
+        case "SETEAR_CARGANDO_SPINNER":
+            return {
+                ...stateActual,
+                cargandoSpinner: action.data.cargandoSpinner,
+            }
+
+        case "SETEAR_SELECCION":
+            return {
+                ...stateActual,
+                seleccion: action.data.seleccion,
+            }
+
+        case "SETEAR_SELECCION_LISTADO_CURSOS":
+            return {
+                ...stateActual,
+                seleccionListadoCursos: action.data.seleccionListadoCursos,
             }
 
         default:

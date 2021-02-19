@@ -1,5 +1,6 @@
 import { URL_BACKEND } from "../environments/environments";
 
+//* USUARIOS
 export const postRegistroUsuario = async (objUsuario, token) => {
     const peticion = await fetch(`${URL_BACKEND}/registrar`, {
         method: "POST",
@@ -56,3 +57,89 @@ export const putUsuario = async (objUsuario, token) => {
     const data = await peticion.json();
     return data;
 };
+
+
+//* GRADOS
+export const postGrado = async (objGrado, token) => {
+    const peticion = await fetch(`${URL_BACKEND}/grado`, {
+        method: "POST",
+        body: JSON.stringify(objGrado),
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+        },
+    });
+    const data = await peticion.json();
+    return data;
+};
+
+
+export const getGrados = async () => {
+    const peticion = await fetch(`${URL_BACKEND}/grado`);
+
+    const data = await peticion.json();
+    return data;
+};
+
+
+export const putGrado = async (objGrado, token) => {
+    const peticion = await fetch(`${URL_BACKEND}/actualizarGrado/${objGrado.grado_id}`, {
+        method: "PUT",
+        body: JSON.stringify(objGrado),
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+        },
+    });
+    const data = await peticion.json();
+    return data;
+};
+
+
+
+//* CURSOS
+export const postRegistrarCurso = async (objCurso, token) => {
+    const peticion = await fetch(`${URL_BACKEND}/curso`, {
+        method: "POST",
+        body: JSON.stringify(objCurso),
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+        },
+    });
+    const data = await peticion.json();
+    return data;
+};
+
+
+export const getCursos = async () => {
+    const peticion = await fetch(`${URL_BACKEND}/curso`);
+
+    const data = await peticion.json();
+    return data;
+};
+
+
+export const getCursosById = async (id) => {
+    const peticion = await fetch(`${URL_BACKEND}/cursoFilter/${id}`);
+
+    const data = await peticion.json();
+    return data;
+};
+
+
+export const putCurso = async (objCurso, token) => {
+    const peticion = await fetch(`${URL_BACKEND}/actualizarCurso/${objCurso.curso_id}`, {
+        method: "PUT",
+        body: JSON.stringify(objCurso),
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+        },
+    });
+    const data = await peticion.json();
+    return data;
+};
+
+
+

@@ -28,24 +28,27 @@ const AdminHeader = () => {
                     </Link>
                 </NavDropdown>
 
-                <NavDropdown title="Grados" id="basic-nav-dropdown">
+                <Link
+                    className="nav-link"
+                    to={"/admin/grado/registro"}
+                >
+                    Grados
+                </Link>
+
+                <NavDropdown title="Cursos" id="basic-nav-dropdown">
                     <Link
                         className="dropdown-item"
-                        to={"/admin/grado/registro"}
+                        to={"/admin/curso/registro"}
                     >
                         Registro
                     </Link>
+
                     <Link
                         className="dropdown-item"
-                        to={"/admin/grado/listado"}
+                        to={"/admin/curso/listado"}
                     >
                         Listado
                     </Link>
-                </NavDropdown>
-
-                <NavDropdown title="Cursos" id="basic-nav-dropdown">
-                    <NavDropdown.Item href="#action/3.1">Registro</NavDropdown.Item>
-                    <NavDropdown.Item href="#action/3.2">Listado</NavDropdown.Item>
                 </NavDropdown>
             </Nav>
             <Nav>

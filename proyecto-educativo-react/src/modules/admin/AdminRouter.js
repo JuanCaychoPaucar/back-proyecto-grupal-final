@@ -7,7 +7,8 @@ import AdminUsuarioRegistroScreen from './screens/usuario/AdminUsuarioRegistroSc
 import AdminUsuarioListadoScreen from './screens/usuario/AdminUsuarioListadoScreen';
 
 import AdminGradoRegistroScreen from './screens/grado/AdminGradoRegistroScreen';
-import AdminGradoListadoScreen from './screens/grado/AdminGradoListadoScreen';
+import AdminCursoRegistroScreen from './screens/curso/AdminCursoRegistroScreen';
+import AdminCursoListadoScreen from './screens/curso/AdminCursoListadoScreen';
 
 import AuthContext from '../auth/context/AuthContext';
 import AdminState from '../admin/context/AdminState';
@@ -27,10 +28,11 @@ const AdminRouter = () => {
                             <AdminHeader />
                             <main className="container pt-5">
                                 <Switch>
+                                    <RutaPrivada path={"/admin/curso/registro"} componente={AdminCursoRegistroScreen} />
+                                    <RutaPrivada path={"/admin/curso/listado"} componente={AdminCursoListadoScreen} />
                                     <RutaPrivada path={"/admin/usuario/registro"} componente={AdminUsuarioRegistroScreen} />
                                     <RutaPrivada path={"/admin/usuario/listado"} componente={AdminUsuarioListadoScreen} />
                                     <RutaPrivada path={"/admin/grado/registro"} componente={AdminGradoRegistroScreen} />
-                                    <RutaPrivada path={"/admin/grado/listado"} componente={AdminGradoListadoScreen} />
                                     <RutaPrivada path={"/admin"} componente={AdminDashboardScreen} />  {/* la ruta mas general va abajo */}
                                 </Switch>
                             </main>

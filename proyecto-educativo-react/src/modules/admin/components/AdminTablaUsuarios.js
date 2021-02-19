@@ -8,10 +8,13 @@ import '../screens/usuario/AdminUsuarioDetallesScreen.css';
 
 const AdminTablaUsuarios = ({ usuarios }) => {
 
-    const { cargandoUsuario, cargandoModal, setearCargandoUsuario, setearCargandoModal } = useContext(AdminContext);
+    const { cargandoUsuario, cargandoModal, seleccion, setearCargandoUsuario, setearCargandoModal, setearSeleccion } = useContext(AdminContext);
 
     const [show, setShow] = useState(false);
-    const handleClose = () => setShow(false);
+    const handleClose = () => {
+        setearSeleccion("");
+        setShow(false);
+    }
     const handleShow = () => {
         setShow(true);
         setearCargandoModal(true);
@@ -49,10 +52,16 @@ const AdminTablaUsuarios = ({ usuarios }) => {
                                     <td className="align-middle">{usu.usuario_apem}</td>
                                     <td className="align-middle">{usu.usuario_dni}</td>
                                     <td>
-                                        <Button variant="secondary" onClick={handleShow}>
+                                        <Button
+                                            variant="secondary"
+                                            onClick={() => {
+                                                setearSeleccion(usu.usuario_id);
+                                                handleShow();
+                                            }}
+                                        >
                                             Detalles
-                                    </Button>
-                                        <Modal dialogClassName="modal-ancho" show={show} onHide={handleClose}>
+                                        </Button>
+                                        <Modal dialogClassName="modal-ancho" show={seleccion == usu.usuario_id ? true : false} onHide={handleClose}>
                                             <Modal.Header closeButton={!cargandoModal}>
                                                 <Modal.Title>Detalles de usuario</Modal.Title>
                                             </Modal.Header>

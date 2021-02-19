@@ -7,8 +7,8 @@ import { getUsuarioById, putUsuario, postSubirImagen } from '../../../../service
 import imagenCarga from '../../../../assets/img/spinner_book.gif';
 
 const formularioVacio = {
-    usuario_id: null,
-    grado_id: null,
+    usuario_id: 0,
+    grado_id: "",
     usuario_nombre: "",
     usuario_apep: "",
     usuario_apem: "",
@@ -25,34 +25,62 @@ const formularioVacio = {
 
 const AdminUsuarioDetallesScreen = ({ id }) => {
     const { token } = useContext(AuthContext);
-    const { setearIdUsuario, setearCargandoModal, cargandoModal, usuariosListarPorTipo, usu_tipo } = useContext(AdminContext);
+    const { setearIdUsuario, setearCargandoModal, cargandoModal, usuariosListarPorTipo, usu_tipo, seleccion, grados, gradosListarAll } = useContext(AdminContext);
     const [formulario, setFormulario] = useState(formularioVacio);
     const [imagenSeleccionada, setImagenSeleccionada] = useState([]);
     const [vista, setVista] = useState("");
     const [modo, setModo] = useState("visor");
 
     const validarFormulario = () => {
-        if (
-            formulario.usuario_nombre.trim() === "" ||
-            formulario.usuario_apep.trim() === "" ||
-            formulario.usuario_apem.trim() === "" ||
-            formulario.usuario_fechnac.trim() === "" ||
-            formulario.usuario_sexo.trim() === "" ||
-            formulario.usuario_direccion.trim() === "" ||
-            formulario.usuario_dni.trim() === "" ||
-            formulario.usuario_email.trim() === "" ||
-            formulario.usuario_tipo.trim() === ""
-        ) {
-            console.log("COMPLETAR LOS CAMPOS OBLIGATORIOS");
-            Swal.fire({
-                title: "Campos incompletos!",
-                text: "Verificar los campos obligatorios",
-                icon: "warning"
-            });
-            return false;
+        if (usu_tipo === "alumno") {
+            console.log("tipo grado id", typeof formulario.grado_id);
+            if (
+                formulario.grado_id == "0" ||
+                formulario.usuario_nombre.trim() === "" ||
+                formulario.usuario_apep.trim() === "" ||
+                formulario.usuario_apem.trim() === "" ||
+                formulario.usuario_fechnac.trim() === "" ||
+                formulario.usuario_sexo.trim() === "" ||
+                formulario.usuario_direccion.trim() === "" ||
+                formulario.usuario_dni.trim() === "" ||
+                formulario.usuario_email.trim() === "" ||
+                formulario.usuario_tipo.trim() === ""
+            ) {
+                // console.log("COMPLETAR LOS CAMPOS OBLIGATORIOS");
+                Swal.fire({
+                    title: "Campos incompletos!",
+                    text: "Los campos requeridos no pueden estar vacios",
+                    icon: "warning"
+                });
+                setModo("editar");
+                return false;
+            } else {
+                return true;
+            }
+
         } else {
-            console.log("ya");
-            return true;
+            if (
+                formulario.usuario_nombre.trim() === "" ||
+                formulario.usuario_apep.trim() === "" ||
+                formulario.usuario_apem.trim() === "" ||
+                formulario.usuario_fechnac.trim() === "" ||
+                formulario.usuario_sexo.trim() === "" ||
+                formulario.usuario_direccion.trim() === "" ||
+                formulario.usuario_dni.trim() === "" ||
+                formulario.usuario_email.trim() === "" ||
+                formulario.usuario_tipo.trim() === ""
+            ) {
+                // console.log("COMPLETAR LOS CAMPOS OBLIGATORIOS");
+                Swal.fire({
+                    title: "Campos incompletos!",
+                    text: "Los campos requeridos no pueden estar vacios",
+                    icon: "warning"
+                });
+                setModo("editar");
+                return false;
+            } else {
+                return true;
+            }
         }
     }
 
@@ -110,7 +138,7 @@ const AdminUsuarioDetallesScreen = ({ id }) => {
 
             Swal.fire({
                 title: "¿Editar?",
-                text: "¿Seguro que desea editar el registro de la mascota?",
+                text: "¿Seguro que desea editar el registro del usuario?",
                 icon: "question",
                 showCancelButton: true,
             }).then(({ isConfirmed }) => {
@@ -124,7 +152,7 @@ const AdminUsuarioDetallesScreen = ({ id }) => {
                             if (imagenSeleccionada.length === 0) {
                                 Swal.fire({
                                     title: "Registro actualizado!",
-                                    text: "El registro se ha actualizado exitosamente",
+                                    text: "El usuario se ha actualizado exitosamente",
                                     icon: "success",
                                     timer: 1500,
                                     showConfirmButton: false,
@@ -294,19 +322,18 @@ const AdminUsuarioDetallesScreen = ({ id }) => {
                     </div>
                 </div>
 
-                <div className="form-group">
-                    <label htmlFor="">Direccion</label>
-                    <input type="text"
-                        className="form-control"
-                        placeholder="Ingrese direccion"
-                        name="usuario_direccion"
-                        value={formulario.usuario_direccion}
-                        onChange={handleChange}
-                        disabled={modo === "visor" ? true : false}
-                    />
-                </div>
-
                 <div className="form-row">
+                    <div className="form-group col-md-8">
+                        <label htmlFor="">Direccion</label>
+                        <input type="text"
+                            className="form-control"
+                            placeholder="Ingrese direccion"
+                            name="usuario_direccion"
+                            value={formulario.usuario_direccion}
+                            onChange={handleChange}
+                            disabled={modo === "visor" ? true : false}
+                        />
+                    </div>
                     <div className="form-group col-md-4">
                         <label htmlFor="">Telefono</label>
                         <input
@@ -319,6 +346,9 @@ const AdminUsuarioDetallesScreen = ({ id }) => {
                             disabled={modo === "visor" ? true : false}
                         />
                     </div>
+                </div>
+
+                <div className="form-row">
                     <div className="form-group col-md-8">
                         <label htmlFor="">Email <span className="text-danger font-weight-bold">*</span></label>
                         <input
@@ -331,6 +361,28 @@ const AdminUsuarioDetallesScreen = ({ id }) => {
                             disabled={modo === "visor" ? true : false}
                         />
                     </div>
+                    {
+                        usu_tipo === "alumno" ?
+                            <div className="form-group col-md-4">
+                                <label htmlFor="">Grado <span className="text-danger font-weight-bold">*</span></label>
+                                <select
+                                    className="form-control"
+                                    name="grado_id"
+                                    value={formulario.grado_id}
+                                    onChange={handleChange}
+                                    disabled={modo === "visor" ? true : false}
+                                >
+                                    <option value="0">Seleccione grado</option>
+                                    {
+                                        grados.map((gra) => (
+                                            <option key={gra.grado_id} value={gra.grado_id}>{gra.grado_nivel + "-" + gra.grado_numero}</option>
+                                        ))
+                                    }
+                                </select>
+                            </div>
+                            :
+                            <div></div>
+                    }
                 </div>
 
                 <div className="form-group">

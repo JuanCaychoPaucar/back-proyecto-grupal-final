@@ -7,7 +7,7 @@ import { postRegistroUsuario, postSubirImagen } from '../../../../services/admin
 import imagenCarga from '../../../../assets/img/spinner_book.gif';
 
 const formularioVacio = {
-    grado_id: null,
+    grado_id: "",
     usuario_nombre: "",
     usuario_apep: "",
     usuario_apem: "",
@@ -25,40 +25,81 @@ const formularioVacio = {
 const AdminUsuarioRegistroScreen = () => {
 
     const { token } = useContext(AuthContext);
-    const { cargandoUsuario, setearCargandoUsuario } = useContext(AdminContext);
+    const { cargandoUsuario, setearCargandoUsuario, grados, gradosListarAll } = useContext(AdminContext);
 
     const [formulario, setFormulario] = useState(formularioVacio);
     const [imagenSeleccionada, setImagenSeleccionada] = useState([]);
     const [vista, setVista] = useState("");
+    const [tipoSeleccionado, setTipoSeleccionado] = useState("");
 
     const validarFormulario = () => {
-        if (
-            formulario.usuario_nombre.trim() === "" ||
-            formulario.usuario_apep.trim() === "" ||
-            formulario.usuario_apem.trim() === "" ||
-            formulario.usuario_fechnac.trim() === "" ||
-            formulario.usuario_sexo.trim() === "" ||
-            formulario.usuario_direccion.trim() === "" ||
-            formulario.usuario_dni.trim() === "" ||
-            formulario.usuario_email.trim() === "" ||
-            formulario.usuario_tipo.trim() === "" ||
-            formulario.password.trim() === ""
-        ) {
-            console.log("COMPLETAR LOS CAMPOS OBLIGATORIOS");
-            return false;
+        if (tipoSeleccionado === "alumno") {
+            if (
+                formulario.grado_id.trim() === "" ||
+                formulario.usuario_nombre.trim() === "" ||
+                formulario.usuario_apep.trim() === "" ||
+                formulario.usuario_apem.trim() === "" ||
+                formulario.usuario_fechnac.trim() === "" ||
+                formulario.usuario_sexo.trim() === "" ||
+                formulario.usuario_direccion.trim() === "" ||
+                formulario.usuario_dni.trim() === "" ||
+                formulario.usuario_email.trim() === "" ||
+                formulario.usuario_tipo.trim() === "" ||
+                formulario.password.trim() === ""
+            ) {
+                // console.log("COMPLETAR LOS CAMPOS OBLIGATORIOS");
+                Swal.fire({
+                    title: "Campos incompletos!",
+                    text: "Los campos requeridos no pueden estar vacios",
+                    icon: "warning"
+                });
+                return false;
+            } else {
+                return true;
+            }
+
         } else {
-            console.log("ya");
-            return true;
+            if (
+                formulario.usuario_nombre.trim() === "" ||
+                formulario.usuario_apep.trim() === "" ||
+                formulario.usuario_apem.trim() === "" ||
+                formulario.usuario_fechnac.trim() === "" ||
+                formulario.usuario_sexo.trim() === "" ||
+                formulario.usuario_direccion.trim() === "" ||
+                formulario.usuario_dni.trim() === "" ||
+                formulario.usuario_email.trim() === "" ||
+                formulario.usuario_tipo.trim() === "" ||
+                formulario.password.trim() === ""
+            ) {
+                // console.log("COMPLETAR LOS CAMPOS OBLIGATORIOS");
+                Swal.fire({
+                    title: "Campos incompletos!",
+                    text: "Los campos requeridos no pueden estar vacios",
+                    icon: "warning"
+                });
+                return false;
+            } else {
+                return true;
+            }
         }
     }
 
     const handleChange = (e) => {
         let valor = e.target.value;
+        // console.log("target name", e.target.name);
 
         setFormulario({
             ...formulario,
             [e.target.name]: valor,
         });
+
+        if (e.target.name === "usuario_tipo") {
+            if (valor === "alumno") {
+                setTipoSeleccionado("alumno");
+            } else {
+                setTipoSeleccionado("");
+            }
+        }
     };
 
 
@@ -97,7 +138,13 @@ const AdminUsuarioRegistroScreen = () => {
             console.log("HACEMOS EL POST");
             setearCargandoUsuario(true);
 
-            postRegistroUsuario(formulario, token).then((rpta) => {
+            let nuevoFormulario = { ...formulario };
+
+            if (tipoSeleccionado !== "alumno") {
+                nuevoFormulario.grado_id = null;
+            }
+
+            postRegistroUsuario(nuevoFormulario, token).then((rpta) => {
                 console.log("RESPUESTA", rpta);
                 if (rpta.ok) {
                     const payload = rpta.content.split(".")[1];
@@ -150,6 +197,7 @@ const AdminUsuarioRegistroScreen = () => {
                     // LIMPIAR FORMULARIO
                     setFormulario(formularioVacio);
                     setVista("");
+                    setTipoSeleccionado("");
 
                 } else {
                     setearCargandoUsuario(false);
@@ -167,7 +215,12 @@ const AdminUsuarioRegistroScreen = () => {
 
     useEffect(() => {
 
-    }, [vista])
+    }, [vista, grados])
+
+    useEffect(() => {
+        gradosListarAll();
+        console.log("GRADOS EN REGISTRO USUARIO", grados);
+    }, []);
 
 
     return (
@@ -266,17 +319,6 @@ const AdminUsuarioRegistroScreen = () => {
                     </div>
                 </div>
 
-                <div className="form-group">
-                    <label htmlFor="">Direccion <span className="text-danger font-weight-bold">*</span></label>
-                    <input type="text"
-                        className="form-control"
-                        placeholder="Ingrese direccion"
-                        name="usuario_direccion"
-                        value={formulario.usuario_direccion}
-                        onChange={handleChange}
-                    />
-                </div>
-
                 <div className="form-row">
                     <div className="form-group col-md-4">
                         <label htmlFor="">Telefono</label>
@@ -286,6 +328,30 @@ const AdminUsuarioRegistroScreen = () => {
                             placeholder="Ingrese numero telefono"
                             name="usuario_telefono"
                             value={formulario.usuario_telefono}
+                            onChange={handleChange}
+                        />
+                    </div>
+                    <div className="form-group col-md-8">
+                        <label htmlFor="">Direccion <span className="text-danger font-weight-bold">*</span></label>
+                        <input type="text"
+                            className="form-control"
+                            placeholder="Ingrese direccion"
+                            name="usuario_direccion"
+                            value={formulario.usuario_direccion}
+                            onChange={handleChange}
+                        />
+                    </div>
+                </div>
+
+                <div className="form-row">
+                    <div className="form-group col-md-4">
+                        <label htmlFor="">Password <span className="text-danger font-weight-bold">*</span></label>
+                        <input
+                            type="password"
+                            className="form-control"
+                            placeholder="Ingrese password"
+                            name="password"
+                            value={formulario.password}
                             onChange={handleChange}
                         />
                     </div>
@@ -317,17 +383,26 @@ const AdminUsuarioRegistroScreen = () => {
                             <option value="alumno">Alumno</option>
                         </select>
                     </div>
-                    <div className="form-group col-md-8">
-                        <label htmlFor="">Password <span className="text-danger font-weight-bold">*</span></label>
-                        <input
-                            type="password"
-                            className="form-control"
-                            placeholder="Ingrese password"
-                            name="password"
-                            value={formulario.password}
-                            onChange={handleChange}
-                        />
-                    </div>
+                    {tipoSeleccionado === "alumno" ?
+                        <div className="form-group col-md-8">
+                            <label htmlFor="">Grado <span className="text-danger font-weight-bold">*</span></label>
+                            <select
+                                className="form-control"
+                                name="grado_id"
+                                value={formulario.grado_id}
+                                onChange={handleChange}
+                            >
+                                <option value="">Seleccione grado</option>
+                                {
+                                    grados.map((gra) => (
+                                        <option key={gra.grado_id} value={gra.grado_id}>{gra.grado_nivel + "-" + gra.grado_numero}</option>
+                                    ))
+                                }
+                            </select>
+                        </div>
+                        :
+                        <div></div>
+                    }
                 </div>
 
                 <div className="form-group">
@@ -350,7 +425,7 @@ const AdminUsuarioRegistroScreen = () => {
                             className="btn btn-block btn-primary"
                             type="submit"
                         >
-                            Registar usuario
+                            Registrar usuario
                         </button>
                     </div>
                     <div className="form-group col-md-6">
