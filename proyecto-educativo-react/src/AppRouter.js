@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, HashRouter } from "react-router-dom";
 import AdminRouter from './modules/admin/AdminRouter';
 import AuthRouter from './modules/auth/AuthRouter';
 import InvitedRouter from './modules/invited/InvitedRouter';
@@ -31,3 +31,4 @@ const AppRouter = () => {
 }
 
 export default AppRouter;
+// Router por HashRouter

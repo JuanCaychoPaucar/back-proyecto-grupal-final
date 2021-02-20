@@ -66,6 +66,7 @@ const AdminGradoRegistroScreen = () => {
                     if (rpta.ok) {
                         setearCargandoGrado(false);
                         setFormulario(formularioVacio);
+                        gradosListarAll();
                         Swal.fire({
                             title: "Registro creado!",
                             text: "El grado se ha registrado exitosamente",
