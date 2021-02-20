@@ -288,7 +288,7 @@ const AdminCursoDetallesScreen = ({ id }) => {
                             }}
                         >
                             Cancelar
-                    </button>
+                        </button>
                     </div>
                 </div>
 

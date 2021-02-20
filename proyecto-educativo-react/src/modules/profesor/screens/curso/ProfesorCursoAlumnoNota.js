@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 
-import { postNotaCursoAlumno } from '../../../../services/profesorServices';
+import { postNotaCursoAlumno, putNotaCursoAlumnoByNotaId } from '../../../../services/profesorServices';
 
 import AuthContext from '../../../auth/context/AuthContext';
 import ProfesorContext from '../../context/ProfesorContext';
@@ -13,11 +13,12 @@ const formularioVacio = {
     alumno_id: ""
 };
 
-const ProfesorCursoAlumnoNota = ({ alu, handleClose }) => {
+const ProfesorCursoAlumnoNota = ({ alu, handleClose, notaId, nuevaNota }) => {
 
     const { token } = useContext(AuthContext);
     const [formulario, setFormulario] = useState(formularioVacio);
     const { setearCargandoModal, curso_id, alumnosListarAllByCursoId } = useContext(ProfesorContext);
+    const [modo, setModo] = useState("crear");
 
     const validarFormulario = () => {
         if (+formulario.nota >= 0 && +formulario.nota <= 20) {
@@ -48,18 +49,60 @@ const ProfesorCursoAlumnoNota = ({ alu, handleClose }) => {
         e.preventDefault();
         let validacion = validarFormulario();
         if (validacion) {
-            postNotaCursoAlumno(formulario, token).then((rpta) => {
-                console.log("CREACION NOTA", rpta);
-                if (rpta.ok) {
-                    console.log("CREACION DE NOTA - OK");
-                    alumnosListarAllByCursoId(curso_id, token);
-                    handleClose();
+
+            if (modo === "crear") {
+                // modo crear
+                postNotaCursoAlumno(formulario, token).then((rpta) => {
+                    console.log("CREACION NOTA", rpta);
+                    if (rpta.ok) {
+                        console.log("CREACION DE NOTA - OK");
+                        alumnosListarAllByCursoId(curso_id, token);
+                        handleClose();
+                    }
+                })
+
+            } else {
+                // modo editar
+                let nuevo = {
+                    notas_id: formulario.notas_id,
+                    notas_calificacion: formulario.nota
                 }
-            })
+                putNotaCursoAlumnoByNotaId(nuevo, token).then((rpta) => {
+                    console.log("FORMULARIO : ", nuevo);
+                    console.log("ACTUALIZACION NOTA", rpta);
+                    if (rpta.ok) {
+                        console.log("ACTUALIZACION DE NOTA - OK");
+                        alumnosListarAllByCursoId(curso_id, token);
+                        handleClose();
+                    }
+                })
+            }
+
+
+
+
+
         }
     };
 
+
+    const traerNota = () => {
+        if (nuevaNota === "--") {
+
+        } else {
+            let nuevoForm = {
+                ...formulario,
+                notas_id: notaId,
+                nota: nuevaNota,
+            }
+            setFormulario(nuevoForm);
+            setModo("editar");
+        }
+    }
+
+
     useEffect(() => {
+        traerNota();
         setearCargandoModal(false);
     }, [])
 
@@ -86,7 +129,12 @@ const ProfesorCursoAlumnoNota = ({ alu, handleClose }) => {
                             </div>
 
                             <div className="col-md-5">
-                                <button type="submit" className="btn btn-success">Calificar</button>
+                                <button
+                                    type="submit"
+                                    className="btn btn-success"
+                                >
+                                    Calificar
+                                </button>
                             </div>
                         </div>
                     </form>

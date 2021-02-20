@@ -7,7 +7,7 @@ import ProfesorCursoAlumnoNota from '../screens/curso/ProfesorCursoAlumnoNota';
 
 const ProfesorTablaAlumnosCurso = ({ alumnos }) => {
 
-    const { curso_id, cargandoAlumnos, cargandoModal, seleccion, setearSeleccion, setearCargandoModal } = useContext(ProfesorContext);
+    const { curso_id, cargandoAlumnos, cargandoModal, seleccion, setearSeleccion, setearCargandoModal, setearIdNota } = useContext(ProfesorContext);
 
     const [show, setShow] = useState(false);
 
@@ -56,9 +56,11 @@ const ProfesorTablaAlumnosCurso = ({ alumnos }) => {
                                         let contador = 0;
                                         let arregloNotas = alu.notas;
                                         let nuevaNota = "";
+                                        let notaId = null;
 
                                         arregloNotas.map((arre) => {
                                             if (arre.curso_id === curso_id) {
+                                                notaId = arre.notas_id;
                                                 nuevaNota = arre.notas_calificacion;
                                                 contador = contador + 1;
                                                 return;
@@ -93,7 +95,7 @@ const ProfesorTablaAlumnosCurso = ({ alumnos }) => {
                                                             <Modal.Title>Asignacion de Notas</Modal.Title>
                                                         </Modal.Header>
                                                         <Modal.Body>
-                                                            <ProfesorCursoAlumnoNota alu={alu} handleClose={handleClose} />
+                                                            <ProfesorCursoAlumnoNota alu={alu} handleClose={handleClose} notaId={notaId} nuevaNota={nuevaNota} />
                                                         </Modal.Body>
                                                         <Modal.Footer>
                                                             <Button variant="secondary" onClick={handleClose} disabled={cargandoModal}>

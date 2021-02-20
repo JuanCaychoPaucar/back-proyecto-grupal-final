@@ -45,6 +45,20 @@ export const postNotaCursoAlumno = async (objNota, token) => {
 };
 
 
+export const putNotaCursoAlumnoByNotaId = async (objNota, token) => {
+    const peticion = await fetch(`${URL_BACKEND}/editarNota/${objNota.notas_id}`, {
+        method: "PUT",
+        body: JSON.stringify(objNota),
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+        },
+    });
+    const data = await peticion.json();
+    return data;
+};
+
+
 export const getNotaByAlumnoId = async (id, token) => {
     const peticion = await fetch(`${URL_BACKEND}/verNotas?alumno_id=${id}`, {
         method: "GET",

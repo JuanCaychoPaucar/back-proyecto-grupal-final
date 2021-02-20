@@ -11,6 +11,7 @@ const ProfesorState = (props) => {
     const { token } = useContext(AuthContext);
 
     const [state, dispatch] = useReducer(ProfesorReducer, {
+        nota_id: null,
         curso_id: null,
         curso_nombre: "",
         alumnos: [],
@@ -22,6 +23,16 @@ const ProfesorState = (props) => {
         cargandoSpinner: false,
         seleccion: "",
     });
+
+    const setearIdNota = (id) => {
+        dispatch({
+            type: "SETEAR_ID_NOTA",
+            data: {
+                ...state,
+                nota_id: id,
+            }
+        });
+    };
 
     const setearIdCurso = (id) => {
         dispatch({
@@ -151,6 +162,7 @@ const ProfesorState = (props) => {
 
     return (
         <ProfesorContext.Provider value={{
+            nota_id: state.nota_id,
             curso_id: state.curso_id,
             curso_nombre: state.curso_nombre,
             alumnos: state.alumnos,
@@ -163,6 +175,7 @@ const ProfesorState = (props) => {
             seleccion: state.seleccion,
             cursosListarAllByUsuarioId: cursosListarAllByUsuarioId,
             alumnosListarAllByCursoId: alumnosListarAllByCursoId,
+            setearIdNota: setearIdNota,
             setearIdCurso: setearIdCurso,
             setearCursoNombre: setearCursoNombre,
             setearCargandoModal: setearCargandoModal,

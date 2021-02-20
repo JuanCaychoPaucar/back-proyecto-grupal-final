@@ -1,6 +1,12 @@
 const ProfesorReducer = (stateActual, action) => {
 
     switch (action.type) {
+        case "SETEAR_ID_NOTA":
+            return {
+                ...stateActual,
+                nota_id: action.data.nota_id,
+            }
+
         case "SETEAR_ID_CURSO":
             return {
                 ...stateActual,
