@@ -12,48 +12,16 @@ const ProfesorHeader = () => {
     return (
         <>
             <Navbar bg="dark" variant="dark" expand="lg">
-                <Navbar.Brand>PROFESOR</Navbar.Brand>
+                <Link className="font-weight-bold navbar-titulo-header" to={"/profesor"}>PROFESOR</Link>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav" className="navbar-collapse-header-admin">
                     <Nav className="mr-auto">
-                        {/* <NavDropdown title="Usuarios" id="basic-nav-dropdown">
-                            <Link
-                                className="dropdown-item"
-                                to={"/admin/usuario/registro"}
-                            >
-                                Registro
-                            </Link>
-
-                            <Link
-                                className="dropdown-item"
-                                to={"/admin/usuario/listado"}
-                            >
-                                Listado
-                            </Link>
-                        </NavDropdown> */}
-
                         <Link
                             className="nav-link"
                             to={"/profesor/curso"}
                         >
                             Mis cursos
                         </Link>
-
-                        {/* <NavDropdown title="Cursos" id="basic-nav-dropdown">
-                            <Link
-                                className="dropdown-item"
-                                to={"/admin/curso/registro"}
-                            >
-                                Registro
-                            </Link>
-
-                            <Link
-                                className="dropdown-item"
-                                to={"/admin/curso/listado"}
-                            >
-                                Listado
-                            </Link>
-                        </NavDropdown> */}
                     </Nav>
                     <Nav>
                         <Navbar.Text className="mr-5">

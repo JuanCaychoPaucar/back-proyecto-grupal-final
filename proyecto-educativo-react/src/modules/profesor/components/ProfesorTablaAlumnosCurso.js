@@ -7,7 +7,7 @@ import ProfesorCursoAlumnoNota from '../screens/curso/ProfesorCursoAlumnoNota';
 
 const ProfesorTablaAlumnosCurso = ({ alumnos }) => {
 
-    const { cargandoAlumnos, cargandoModal, seleccion, setearSeleccion, setearCargandoModal } = useContext(ProfesorContext);
+    const { curso_id, cargandoAlumnos, cargandoModal, seleccion, setearSeleccion, setearCargandoModal } = useContext(ProfesorContext);
 
     const [show, setShow] = useState(false);
 
@@ -52,39 +52,60 @@ const ProfesorTablaAlumnosCurso = ({ alumnos }) => {
                                         <td colSpan="6">No se encontraron alumnos en este curso</td>
                                     </tr>
                                     :
-                                    alumnos.usuarios.map((alu) => (
-                                        <tr key={alu.usuario_id}>
-                                            <td className="align-middle">{alu.usuario_id}</td>
-                                            <td className="align-middle">{alu.usuario_nombre}</td>
-                                            <td className="align-middle">{alu.usuario_apep}</td>
-                                            <td className="align-middle">{alu.usuario_apem}</td>
-                                            <td className="align-middle">00</td>
-                                            <td>
-                                                <Button
-                                                    variant="warning"
-                                                    onClick={() => {
-                                                        setearSeleccion(alu.usuario_id);
-                                                        handleShow();
-                                                    }}
-                                                >
-                                                    Calificar
+                                    alumnos.usuarios.map((alu) => {
+                                        let contador = 0;
+                                        let arregloNotas = alu.notas;
+                                        let nuevaNota = "";
+
+                                        arregloNotas.map((arre) => {
+                                            if (arre.curso_id === curso_id) {
+                                                nuevaNota = arre.notas_calificacion;
+                                                contador = contador + 1;
+                                                return;
+                                            }
+                                        })
+
+                                        if (contador === 0) {
+                                            nuevaNota = "--"
+                                        }
+
+
+
+                                        return (
+                                            <tr key={alu.usuario_id}>
+                                                <td className="align-middle">{alu.usuario_id}</td>
+                                                <td className="align-middle">{alu.usuario_nombre}</td>
+                                                <td className="align-middle">{alu.usuario_apep}</td>
+                                                <td className="align-middle">{alu.usuario_apem}</td>
+                                                <td className="align-middle">{nuevaNota}</td>
+                                                <td>
+                                                    <Button
+                                                        variant="warning"
+                                                        onClick={() => {
+                                                            setearSeleccion(alu.usuario_id);
+                                                            handleShow();
+                                                        }}
+                                                    >
+                                                        Calificar
                                                 </Button>
-                                                <Modal size="lg" show={seleccion == alu.usuario_id ? true : false} onHide={handleClose}>
-                                                    <Modal.Header closeButton={!cargandoModal}>
-                                                        <Modal.Title>Asignacion de Notas</Modal.Title>
-                                                    </Modal.Header>
-                                                    <Modal.Body>
-                                                        <ProfesorCursoAlumnoNota alu={alu} />
-                                                    </Modal.Body>
-                                                    <Modal.Footer>
-                                                        <Button variant="secondary" onClick={handleClose} disabled={cargandoModal}>
-                                                            Cerrar
+                                                    <Modal size="lg" show={seleccion == alu.usuario_id ? true : false} onHide={handleClose}>
+                                                        <Modal.Header closeButton={!cargandoModal}>
+                                                            <Modal.Title>Asignacion de Notas</Modal.Title>
+                                                        </Modal.Header>
+                                                        <Modal.Body>
+                                                            <ProfesorCursoAlumnoNota alu={alu} handleClose={handleClose} />
+                                                        </Modal.Body>
+                                                        <Modal.Footer>
+                                                            <Button variant="secondary" onClick={handleClose} disabled={cargandoModal}>
+                                                                Cerrar
                                                     </Button>
-                                                    </Modal.Footer>
-                                                </Modal>
-                                            </td>
-                                        </tr>
-                                    ))
+                                                        </Modal.Footer>
+                                                    </Modal>
+                                                </td>
+                                            </tr>
+                                        )
+                                    }
+                                    )
                             }
                         </tbody>
                     </table>

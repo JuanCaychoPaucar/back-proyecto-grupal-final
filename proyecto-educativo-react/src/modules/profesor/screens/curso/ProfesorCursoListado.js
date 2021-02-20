@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import AuthContext from '../../../auth/context/AuthContext';
 import ProfesorContext from '../../context/ProfesorContext';
 import ProfesorTablaCursos from '../../components/ProfesorTablaCursos';
-import Swal from "sweetalert2";
+
 
 const ProfesorCursoListado = () => {
 

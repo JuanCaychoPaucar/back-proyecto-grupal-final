@@ -13,7 +13,7 @@ const AdminHeader = () => {
     return (
         <>
             <Navbar bg="dark" variant="dark" expand="lg">
-                <Navbar.Brand>ADMINISTRADOR</Navbar.Brand>
+                <Link className="font-weight-bold navbar-titulo-header" to={"/admin"}>ADMINISTRADOR</Link>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav" className="navbar-collapse-header-admin">
                     <Nav className="mr-auto">

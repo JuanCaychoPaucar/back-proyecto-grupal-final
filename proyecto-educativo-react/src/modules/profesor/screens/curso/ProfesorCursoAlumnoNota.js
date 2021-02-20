@@ -13,11 +13,11 @@ const formularioVacio = {
     alumno_id: ""
 };
 
-const ProfesorCursoAlumnoNota = ({ alu }) => {
+const ProfesorCursoAlumnoNota = ({ alu, handleClose }) => {
 
     const { token } = useContext(AuthContext);
     const [formulario, setFormulario] = useState(formularioVacio);
-    const { setearCargandoModal, curso_id } = useContext(ProfesorContext);
+    const { setearCargandoModal, curso_id, alumnosListarAllByCursoId } = useContext(ProfesorContext);
 
     const validarFormulario = () => {
         if (+formulario.nota >= 0 && +formulario.nota <= 20) {
@@ -52,6 +52,8 @@ const ProfesorCursoAlumnoNota = ({ alu }) => {
                 console.log("CREACION NOTA", rpta);
                 if (rpta.ok) {
                     console.log("CREACION DE NOTA - OK");
+                    alumnosListarAllByCursoId(curso_id, token);
+                    handleClose();
                 }
             })
         }

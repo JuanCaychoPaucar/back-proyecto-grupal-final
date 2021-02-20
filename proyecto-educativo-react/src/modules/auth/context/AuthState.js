@@ -19,6 +19,7 @@ const AuthState = (props) => {
         usu_tipo: null,
         usu_direccion: null,
         usu_estado: false,
+        grado_id: null,
         autenticado: false,
         token: null,
         cargando: true,
@@ -104,6 +105,7 @@ const AuthState = (props) => {
         let foto = usuario.usuario_foto;
         let direccion = usuario.usuario_direccion;
         let estado = usuario.usuario_estado;
+        let gradoId = usuario.grado_id;
 
         localStorage.setItem("token", token);
 
@@ -125,6 +127,7 @@ const AuthState = (props) => {
                 usu_tipo: tipo,
                 usu_direccion: direccion,
                 usu_estado: estado,
+                grado_id: gradoId,
             },
         });
     };
@@ -151,6 +154,7 @@ const AuthState = (props) => {
             usu_tipo: state.usu_tipo,
             usu_direccion: state.usu_direccion,
             usu_estado: state.usu_estado,
+            grado_id: state.grado_id,
             autenticado: state.autenticado,
             token: state.token,
             cargando: state.cargando,
