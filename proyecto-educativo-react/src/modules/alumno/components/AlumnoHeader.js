@@ -12,7 +12,7 @@ const AlumnoHeader = () => {
     return (
         <>
             <Navbar bg="dark" variant="dark" expand="lg">
-                <Navbar.Brand href="#home">ALUMNO</Navbar.Brand>
+                <Navbar.Brand>ALUMNO</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav" className="navbar-collapse-header-admin">
                     <Nav className="mr-auto">

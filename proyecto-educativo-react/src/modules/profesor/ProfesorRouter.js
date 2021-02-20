@@ -4,6 +4,7 @@ import RutaPrivada from '../../RutaPrivada';
 import ProfesorHeader from './components/ProfesorHeader';
 import ProfesorDashboardScreen from './screens/dashboard/ProfesorDashboardScreen';
 import ProfesorCursoListado from './screens/curso/ProfesorCursoListado';
+import ProfesorCursoAlumnos from './screens/curso/ProfesorCursoAlumnos';
 
 import AuthContext from '../auth/context/AuthContext';
 import ProfesorState from '../profesor/context/ProfesorState';
@@ -22,6 +23,7 @@ const ProfesorRouter = () => {
                             <ProfesorHeader />
                             <main className="container pt-5">
                                 <Switch>
+                                    <RutaPrivada path={"/profesor/curso/alumnos/:cursoId"} componente={ProfesorCursoAlumnos} />
                                     <RutaPrivada path={"/profesor/curso"} componente={ProfesorCursoListado} />
                                     <RutaPrivada path={"/profesor"} componente={ProfesorDashboardScreen} />  {/* la ruta mas general va abajo */}
                                 </Switch>

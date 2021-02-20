@@ -26,7 +26,7 @@ const AuthState = (props) => {
 
     const iniciarSesionConLocalStorage = () => {
         const token = localStorage.getItem("token");
-        console.log("token local storage", token);
+        // console.log("token local storage", token);
 
         if (token) {
             // verificar el token con el backend
