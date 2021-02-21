@@ -4,7 +4,7 @@ import ProfesorReducer from './ProfesorReducer';
 
 import AuthContext from '../../auth/context/AuthContext';
 
-import { getCursosByUsuarioId, getAlumnosByCursoId } from '../../../services/profesorServices';
+import { getCursosByUsuarioId, getAlumnosByGradoId } from '../../../services/profesorServices';
 
 const ProfesorState = (props) => {
 
@@ -13,6 +13,7 @@ const ProfesorState = (props) => {
     const [state, dispatch] = useReducer(ProfesorReducer, {
         nota_id: null,
         curso_id: null,
+        grado_id: null,
         curso_nombre: "",
         alumnos: [],
         grados: [],
@@ -40,6 +41,16 @@ const ProfesorState = (props) => {
             data: {
                 ...state,
                 curso_id: id,
+            }
+        });
+    };
+
+    const setearIdGrado = (id) => {
+        dispatch({
+            type: "SETEAR_ID_GRADO",
+            data: {
+                ...state,
+                grado_id: id,
             }
         });
     };
@@ -148,12 +159,12 @@ const ProfesorState = (props) => {
     };
 
 
-    const alumnosListarAllByCursoId = (id, token) => {
+    const alumnosListarAllByGradoId = (id, token) => {
         setearCargandoAlumnos(true);
-        getAlumnosByCursoId(id, token).then((data) => {
-            // console.log("dataaaaaa alumnos cursos", data);
+        getAlumnosByGradoId(id, token).then((data) => {
+            console.log("dataaaaaa alumnos cursos", data);
             if (data.ok) {
-                // console.log("dataaaaaa alumnos cursos ok", data.content);
+                console.log("dataaaaaa alumnos cursos ok", data.content);
                 setearAlumnos(data.content);
                 setearCargandoAlumnos(false);
             }
@@ -164,6 +175,7 @@ const ProfesorState = (props) => {
         <ProfesorContext.Provider value={{
             nota_id: state.nota_id,
             curso_id: state.curso_id,
+            grado_id: state.grado_id,
             curso_nombre: state.curso_nombre,
             alumnos: state.alumnos,
             grados: state.grados,
@@ -174,9 +186,10 @@ const ProfesorState = (props) => {
             cargandoSpinner: state.cargandoSpinner,
             seleccion: state.seleccion,
             cursosListarAllByUsuarioId: cursosListarAllByUsuarioId,
-            alumnosListarAllByCursoId: alumnosListarAllByCursoId,
+            alumnosListarAllByGradoId: alumnosListarAllByGradoId,
             setearIdNota: setearIdNota,
             setearIdCurso: setearIdCurso,
+            setearIdGrado: setearIdGrado,
             setearCursoNombre: setearCursoNombre,
             setearCargandoModal: setearCargandoModal,
             setearSeleccion: setearSeleccion,

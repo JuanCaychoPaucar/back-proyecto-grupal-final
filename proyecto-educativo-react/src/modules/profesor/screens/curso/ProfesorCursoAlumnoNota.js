@@ -15,9 +15,9 @@ const formularioVacio = {
 
 const ProfesorCursoAlumnoNota = ({ alu, handleClose, notaId, nuevaNota }) => {
 
-    const { token } = useContext(AuthContext);
+    const { usu_id, token } = useContext(AuthContext);
     const [formulario, setFormulario] = useState(formularioVacio);
-    const { setearCargandoModal, curso_id, alumnosListarAllByCursoId } = useContext(ProfesorContext);
+    const { setearCargandoModal, curso_id, alumnosListarAllByGradoId, grado_id } = useContext(ProfesorContext);
     const [modo, setModo] = useState("crear");
 
     const validarFormulario = () => {
@@ -50,13 +50,15 @@ const ProfesorCursoAlumnoNota = ({ alu, handleClose, notaId, nuevaNota }) => {
         let validacion = validarFormulario();
         if (validacion) {
 
+            console.log("FORMULARIO POST", formulario);
+
             if (modo === "crear") {
                 // modo crear
                 postNotaCursoAlumno(formulario, token).then((rpta) => {
                     console.log("CREACION NOTA", rpta);
                     if (rpta.ok) {
                         console.log("CREACION DE NOTA - OK");
-                        alumnosListarAllByCursoId(curso_id, token);
+                        alumnosListarAllByGradoId(grado_id, token);
                         handleClose();
                     }
                 })
@@ -72,7 +74,7 @@ const ProfesorCursoAlumnoNota = ({ alu, handleClose, notaId, nuevaNota }) => {
                     console.log("ACTUALIZACION NOTA", rpta);
                     if (rpta.ok) {
                         console.log("ACTUALIZACION DE NOTA - OK");
-                        alumnosListarAllByCursoId(curso_id, token);
+                        alumnosListarAllByGradoId(grado_id, token);
                         handleClose();
                     }
                 })
@@ -88,7 +90,7 @@ const ProfesorCursoAlumnoNota = ({ alu, handleClose, notaId, nuevaNota }) => {
 
     const traerNota = () => {
         if (nuevaNota === "--") {
-
+            console.log("CURSO ID :", curso_id);
         } else {
             let nuevoForm = {
                 ...formulario,

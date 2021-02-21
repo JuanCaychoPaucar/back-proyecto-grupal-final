@@ -16,7 +16,7 @@ export const getCursosByUsuarioId = async (id, token) => {
 
 
 //* ALUMNOS DE UN CURSO
-export const getAlumnosByCursoId = async (id, token) => {
+export const getAlumnosByGradoId = async (id, token) => {
     const peticion = await fetch(`${URL_BACKEND}/gradoAlumnos/${id}`, {
         method: "GET",
         headers: {

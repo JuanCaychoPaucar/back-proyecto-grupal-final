@@ -9,13 +9,14 @@ const ProfesorTablaCursos = (props) => {
 
     const { token } = useContext(AuthContext);
 
-    const { cursos, cargandoCursos, setearIdCurso, setearCursoNombre, alumnos, alumnosListarAllByCursoId } = useContext(ProfesorContext);
+    const { cursos, cargandoCursos, setearIdGrado, setearIdCurso, setearCursoNombre, alumnos, alumnosListarAllByGradoId } = useContext(ProfesorContext);
 
-    const goToAlumnosVer = (cursoId, nom) => {
-        alumnosListarAllByCursoId(cursoId, token);
+    const goToAlumnosVer = (gradoId, nom, cursoId) => {
+        alumnosListarAllByGradoId(gradoId, token);
         setearIdCurso(cursoId);
+        setearIdGrado(gradoId);
         setearCursoNombre(nom);
-        props.history.push(`/profesor/curso/alumnos/${cursoId}`);
+        props.history.push(`/profesor/curso/alumnos/${gradoId}`);
     };
 
     return (
@@ -57,7 +58,7 @@ const ProfesorTablaCursos = (props) => {
                                                 type="button"
                                                 className="btn btn-secondary btn-block"
                                                 onClick={() => {
-                                                    goToAlumnosVer(cur.curso_id, cur.curso_nombre);
+                                                    goToAlumnosVer(cur.grado.grado_id, cur.curso_nombre, cur.curso_id);
                                                 }}
                                             >
                                                 Ver Alumnos

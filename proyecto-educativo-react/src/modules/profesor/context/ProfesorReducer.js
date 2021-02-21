@@ -13,6 +13,12 @@ const ProfesorReducer = (stateActual, action) => {
                 curso_id: action.data.curso_id,
             }
 
+        case "SETEAR_ID_GRADO":
+            return {
+                ...stateActual,
+                grado_id: action.data.grado_id,
+            }
+
         case "SETEAR_CURSO_NOMBRE":
             return {
                 ...stateActual,

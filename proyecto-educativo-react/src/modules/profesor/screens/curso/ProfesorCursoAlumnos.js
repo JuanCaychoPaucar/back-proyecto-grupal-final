@@ -8,7 +8,7 @@ import ProfesorTablaAlumnosCurso from '../../components/ProfesorTablaAlumnosCurs
 const ProfesorCursoAlumnos = () => {
 
     // const { token } = useContext(AuthContext);
-    const { curso_id, curso_nombre, alumnos, alumnosListarAllByCursoId } = useContext(ProfesorContext);
+    const { curso_id, curso_nombre, alumnos } = useContext(ProfesorContext);
 
     // useEffect(() => {
     //     alumnosListarAllByCursoId(curso_id, token);
